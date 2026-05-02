@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akram Academy — Premium Free Academic Courses</title>
+  <meta name="description" content="Akram Academy by Mohd Akram bin Abd Moin. Free academic courses with premium Certificate of Completion. Founded by a UPTA at MITRANS, UiTM." />
+  <meta name="author" content="Mohd Akram bin Abd Moin" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1729'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23D4AF37'%3EAM%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: {
+        navy: { 900:'#070F1F', 800:'#0B1729', 700:'#142142', 600:'#1E2D5A', 500:'#2A3D7A' },
+        gold: { 900:'#7C5E20', 800:'#9A7728', 700:'#B8923A', 600:'#D4AF37', 500:'#E0C158', 400:'#EBD387', 100:'#F8EFD0' },
+        cream:{ 50:'#FBF7EE', 100:'#F5EFDF', 200:'#EDE3CB' }
+      },
+      fontFamily: {
+        sans: ['Inter','system-ui','sans-serif'],
+        serif: ['"Cormorant Garamond"','Georgia','serif'],
+        display: ['Cinzel','Georgia','serif']
+      }
+    }}}
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .font-display { font-family: 'Cinzel', Georgia, serif; letter-spacing: 0.04em; }
+    .font-serif-d { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    .text-gold-grad { background: linear-gradient(135deg, #E0C158 0%, #D4AF37 50%, #B8923A 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .btn-gold { background: linear-gradient(180deg, #E0C158 0%, #B8923A 100%); color: #0B1729; box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 6px 20px rgba(212,175,55,0.25); transition: all 0.2s; }
+    .btn-gold:hover { background: linear-gradient(180deg, #EBD387 0%, #D4AF37 100%); transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 8px 28px rgba(212,175,55,0.4); }
+
+    .btn-outline-gold { border: 1.5px solid rgba(212,175,55,0.5); color: #E0C158; transition: all 0.2s; }
+    .btn-outline-gold:hover { border-color: #D4AF37; background: rgba(212,175,55,0.08); }
+
+    .navy-pat { background-color: #0B1729; background-image: radial-gradient(circle at 1px 1px, rgba(212,175,55,0.04) 1px, transparent 0); background-size: 28px 28px; }
+    .cream-pat { background-color: #FBF7EE; background-image: radial-gradient(circle at 1px 1px, rgba(11,23,41,0.025) 1px, transparent 0); background-size: 28px 28px; }
+
+    .ornament { display: flex; align-items: center; gap: 8px; }
+    .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #B8923A, transparent); max-width: 60px; }
+
+    .course-card { transition: all 0.3s; }
+    .course-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(11,23,41,0.6); }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .quiz-option { transition: all 0.15s; }
+    .quiz-option:hover { background-color: #F5EFDF; border-color: #B8923A; }
+    .quiz-option.selected { background-color: #F8EFD0; border-color: #B8923A; }
+    .quiz-option.correct { background-color: #D1FAE5; border-color: #15803D; }
+    .quiz-option.incorrect { background-color: #FEE2E2; border-color: #B91C1C; }
+    .quiz-option.disabled { pointer-events: none; }
+
+    .prose-academic h3 { font-size: 1.4rem; color: #142142; margin-top: 1.5rem; margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; }
+    .prose-academic h4 { font-size: 1.1rem; color: #142142; margin-top: 1.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+    .prose-academic p { line-height: 1.8; color: #2D3748; margin-bottom: 1rem; }
+    .prose-academic ul { margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8; }
+    .prose-academic ul li { margin-bottom: 0.5rem; list-style: disc; }
+    .prose-academic blockquote { border-left: 3px solid #D4AF37; padding-left: 1.25rem; margin: 1.5rem 0; font-style: italic; color: #4A5568; }
+    .prose-academic strong { color: #142142; font-weight: 600; }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid #D4AF37; outline-offset: 3px; }
+
+    .pill-gold { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 9999px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #E0C158; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-gold-600/20">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+      <button onclick="showPage('home')" class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded border border-gold-600/40 text-gold-600 font-display font-bold text-sm">AM</span>
+        <span class="block font-display font-bold text-white text-[15px] leading-tight">AKRAM<span class="block text-[10px] font-sans font-normal text-gold-400 tracking-[0.2em] uppercase">ACADEMY</span></span>
+      </button>
+      <ul class="hidden lg:flex items-center gap-7 text-sm">
+        <li><button onclick="showPage('home')" class="text-gray-300 hover:text-gold-500 font-medium">Home</button></li>
+        <li><button onclick="scrollToSection('founder')" class="text-gray-300 hover:text-gold-500 font-medium">Founder</button></li>
+        <li><button onclick="showPage('catalog')" class="text-gray-300 hover:text-gold-500 font-medium">Courses</button></li>
+        <li><button onclick="scrollToSection('certificate-section')" class="text-gray-300 hover:text-gold-500 font-medium">Certificate</button></li>
+        <li><a href="cv.pdf" target="_blank" rel="noopener" class="text-gray-300 hover:text-gold-500 font-medium">CV</a></li>
+        <li><a href="index.html" class="text-gray-300 hover:text-gold-500 font-medium">Portfolio</a></li>
+      </ul>
+      <a href="https://www.linkedin.com/in/mohdakramabdmoin" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-2 btn-outline-gold text-xs font-semibold px-4 py-2.5 rounded uppercase tracking-widest">
+        <i data-lucide="users" class="w-4 h-4"></i><span>Join Our Community</span>
+      </a>
+      <button id="menuToggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded text-gold-500" aria-label="Open menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-gold-600/20 bg-navy-900">
+    <ul class="px-5 py-3 space-y-1 text-sm">
+      <li><button onclick="showPage('home'); closeMobileMenu()" class="block w-full text-left py-2.5 px-3 rounded hover:bg-navy-700 text-gray-300">Home</button></li>
+      <li><button onclick="scrollToSection('founder'); closeMobileMenu()" class="block w-full text-left py-2.5 px-3 rounded hover:bg-navy-700 text-gray-300">Founder</button></li>
+      <li><button onclick="showPage('catalog'); closeMobileMenu()" class="block w-full text-left py-2.5 px-3 rounded hover:bg-navy-700 text-gray-300">Courses</button></li>
+      <li><a href="cv.pdf" target="_blank" rel="noopener" class="block py-2.5 px-3 rounded hover:bg-navy-700 text-gray-300">CV (PDF)</a></li>
+      <li><a href="index.html" class="block py-2.5 px-3 rounded hover:bg-navy-700 text-gray-300">← Portfolio</a></li>
+      <li><a href="https://www.linkedin.com/in/mohdakramabdmoin" target="_blank" rel="noopener" class="block py-2.5 px-3 rounded bg-gold-600/10 text-gold-500 font-semibold">Join Our Community</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="pt-16">
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+
+<!-- HERO -->
+<section class="navy-pat relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32">
+  <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-gold-600/5 blur-3xl pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1 text-white">
+        <span class="pill-gold mb-6"><i data-lucide="sparkles" class="w-3 h-3"></i>Premium Learning · Purposeful Impact</span>
+        <h1 class="font-serif-d text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6">Free Academic Courses<br/>with <span class="text-gold-grad italic font-semibold">Premium</span> Learning<br/>Experience</h1>
+        <div class="ornament my-6 max-w-xs"><i data-lucide="diamond" class="w-3 h-3 text-gold-600"></i></div>
+        <p class="text-gray-300 leading-relaxed text-lg mb-8 max-w-2xl">Structured academic learning designed to empower students, researchers, and professionals. Learn from carefully curated courses crafted with academic excellence and <span class="italic text-gold-400">real-world relevance</span>.</p>
+        <div class="flex flex-wrap gap-3">
+          <button onclick="showPage('catalog')" class="btn-gold inline-flex items-center gap-2 font-bold px-6 py-3.5 rounded uppercase text-xs tracking-widest"><i data-lucide="book-open" class="w-4 h-4"></i><span>Explore Courses</span></button>
+          <button onclick="scrollToSection('founder')" class="btn-outline-gold inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded uppercase text-xs tracking-widest"><i data-lucide="user" class="w-4 h-4"></i><span>Meet the Founder</span></button>
+        </div>
+      </div>
+      <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div class="relative">
+          <div class="absolute inset-[-30px] rounded-full bg-gold-600/10 blur-2xl pointer-events-none"></div>
+          <svg class="absolute -left-12 top-12 w-24 h-48 hidden md:block opacity-70" viewBox="0 0 100 200" fill="none">
+            <g stroke="#D4AF37" stroke-width="0.8" fill="none">
+              <path d="M50 10 Q40 30 35 50 Q30 80 35 110 Q40 140 50 170 Q60 180 65 190" />
+              <ellipse cx="40" cy="35" rx="6" ry="3" transform="rotate(-30 40 35)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="35" cy="55" rx="7" ry="3" transform="rotate(-40 35 55)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="32" cy="80" rx="8" ry="3" transform="rotate(-45 32 80)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="33" cy="105" rx="8" ry="3" transform="rotate(-50 33 105)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="38" cy="130" rx="7" ry="3" transform="rotate(-55 38 130)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="45" cy="155" rx="6" ry="3" transform="rotate(-60 45 155)" fill="#D4AF37" opacity="0.5"/>
+            </g>
+          </svg>
+          <svg class="absolute -right-12 top-12 w-24 h-48 hidden md:block opacity-70" viewBox="0 0 100 200" fill="none">
+            <g stroke="#D4AF37" stroke-width="0.8" fill="none">
+              <path d="M50 10 Q60 30 65 50 Q70 80 65 110 Q60 140 50 170 Q40 180 35 190" />
+              <ellipse cx="60" cy="35" rx="6" ry="3" transform="rotate(30 60 35)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="65" cy="55" rx="7" ry="3" transform="rotate(40 65 55)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="68" cy="80" rx="8" ry="3" transform="rotate(45 68 80)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="67" cy="105" rx="8" ry="3" transform="rotate(50 67 105)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="62" cy="130" rx="7" ry="3" transform="rotate(55 62 130)" fill="#D4AF37" opacity="0.5"/>
+              <ellipse cx="55" cy="155" rx="6" ry="3" transform="rotate(60 55 155)" fill="#D4AF37" opacity="0.5"/>
+            </g>
+          </svg>
+          <img src="headshot.jpg" alt="Mohd Akram bin Abd Moin" class="relative z-10 w-72 sm:w-80 lg:w-96 aspect-[4/5] object-cover rounded-2xl shadow-2xl border-2 border-gold-600/30" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder" class="cream-pat py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative">
+          <img src="photo-contemplative.jpg" alt="Mohd Akram, Founder" class="w-72 sm:w-80 lg:w-full max-w-sm aspect-[4/5] object-cover rounded-2xl shadow-xl border border-gold-700/20" loading="lazy" />
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10">
+            <div class="w-20 h-20 rounded-full bg-navy-800 border-2 border-gold-600 flex items-center justify-center shadow-2xl">
+              <span class="font-display text-gold-600 font-bold text-xl">AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="text-xs uppercase tracking-[0.25em] text-gold-700 font-bold mb-3">Vision · Research · Education</p>
+        <h2 class="font-serif-d text-4xl lg:text-5xl font-bold text-navy-800 leading-tight mb-3">Founder & Course Director</h2>
+        <div class="ornament mb-6 max-w-xs"><i data-lucide="diamond" class="w-3 h-3 text-gold-700"></i></div>
+        <h3 class="text-2xl font-bold text-navy-800 mb-5">Mohd Akram bin Abd Moin</h3>
+        <p class="text-gray-700 leading-relaxed mb-8 max-w-2xl">Postgraduate Researcher and Teaching Assistant at the Malaysia Institute of Transport (MITRANS), Universiti Teknologi MARA. Trained through the Young Lecturer Program 2.0 with AI and certified as a Gemini Certified Educator by Google for Education. Passionate about creating structured, accessible, and impactful learning experiences for students and professionals worldwide.</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+          <div class="text-center p-4 bg-white/60 rounded-lg border border-gold-700/15">
+            <div class="w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-navy-800 text-gold-500"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
+            <p class="text-[11px] font-semibold text-navy-800 leading-tight">Postgraduate<br/>Researcher</p>
+          </div>
+          <div class="text-center p-4 bg-white/60 rounded-lg border border-gold-700/15">
+            <div class="w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-navy-800 text-gold-500"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+            <p class="text-[11px] font-semibold text-navy-800 leading-tight">Teaching<br/>Assistant (UPTA)</p>
+          </div>
+          <div class="text-center p-4 bg-white/60 rounded-lg border border-gold-700/15">
+            <div class="w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-navy-800 text-gold-500"><i data-lucide="package" class="w-5 h-5"></i></div>
+            <p class="text-[11px] font-semibold text-navy-800 leading-tight">Logistics &<br/>Transport Expert</p>
+          </div>
+          <div class="text-center p-4 bg-white/60 rounded-lg border border-gold-700/15">
+            <div class="w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-navy-800 text-gold-500"><i data-lucide="feather" class="w-5 h-5"></i></div>
+            <p class="text-[11px] font-semibold text-navy-800 leading-tight">Academic Course<br/>Designer</p>
+          </div>
+        </div>
+        <a href="cv.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-navy-800 font-semibold hover:text-gold-700 text-sm">
+          <i data-lucide="download" class="w-4 h-4"></i><span>Download Full CV</span><i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="navy-pat py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center">
+    <p class="text-xs uppercase tracking-[0.25em] text-gold-500 font-bold mb-3">Learn · Apply · Advance</p>
+    <h2 class="font-serif-d text-4xl lg:text-5xl font-bold text-white mb-3">Featured Courses</h2>
+    <div class="ornament mx-auto max-w-xs mb-12"><i data-lucide="diamond" class="w-3 h-3 text-gold-600"></i></div>
+    <div class="grid md:grid-cols-3 gap-6 text-left">
+      <article class="course-card relative bg-navy-700 border border-gold-600/30 rounded-lg overflow-hidden">
+        <div class="absolute top-0 left-0 px-3 py-2 text-navy-900 font-bold text-xs" style="background: linear-gradient(135deg, #E0C158, #B8923A);">01</div>
+        <div class="p-6 pt-12 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-navy-800 border border-gold-600/40 flex items-center justify-center"><i data-lucide="microscope" class="w-7 h-7 text-gold-500"></i></div>
+          <div class="ornament mb-3 max-w-[100px] mx-auto"><i data-lucide="diamond" class="w-2 h-2 text-gold-700"></i></div>
+          <h3 class="font-serif-d text-xl font-bold text-white mb-3 leading-snug">Research Ethics & Peer Review Basics</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-6">Master the foundations of research ethics, citation practice, and the fundamentals of academic peer review.</p>
+          <div class="flex justify-center gap-4 text-xs text-gold-400 mb-6">
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i>~30 min</span>
+            <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3 h-3"></i>3 modules</span>
+          </div>
+          <button onclick="startCourse()" class="btn-gold w-full inline-flex items-center justify-center gap-2 font-bold px-4 py-3 rounded text-xs uppercase tracking-widest"><span>Start Learning</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+      </article>
+      <article class="course-card relative bg-navy-800/60 border border-gold-600/15 rounded-lg overflow-hidden">
+        <div class="absolute top-0 left-0 px-3 py-2 bg-gold-700/30 text-gold-400 font-bold text-xs">02</div>
+        <div class="p-6 pt-12 text-center opacity-80">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-navy-700 border border-gold-600/20 flex items-center justify-center"><i data-lucide="package" class="w-7 h-7 text-gold-700"></i></div>
+          <div class="ornament mb-3 max-w-[100px] mx-auto"><i data-lucide="diamond" class="w-2 h-2 text-gold-700"></i></div>
+          <h3 class="font-serif-d text-xl font-bold text-white/80 mb-3 leading-snug">Introduction to Logistics & Supply Chain Management</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-6">Learn the fundamentals of logistics and supply chain management, covering key concepts, processes, and real-world applications.</p>
+          <button disabled class="w-full inline-flex items-center justify-center gap-2 border border-gold-600/20 text-gold-700 font-semibold px-4 py-3 rounded text-xs uppercase tracking-widest cursor-not-allowed"><span>Coming Soon</span><i data-lucide="lock" class="w-3 h-3"></i></button>
+        </div>
+      </article>
+      <article class="course-card relative bg-navy-800/60 border border-gold-600/15 rounded-lg overflow-hidden">
+        <div class="absolute top-0 left-0 px-3 py-2 bg-gold-700/30 text-gold-400 font-bold text-xs">03</div>
+        <div class="p-6 pt-12 text-center opacity-80">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-navy-700 border border-gold-600/20 flex items-center justify-center"><i data-lucide="shield-check" class="w-7 h-7 text-gold-700"></i></div>
+          <div class="ornament mb-3 max-w-[100px] mx-auto"><i data-lucide="diamond" class="w-2 h-2 text-gold-700"></i></div>
+          <h3 class="font-serif-d text-xl font-bold text-white/80 mb-3 leading-snug">Fundamentals of Transport & Road Safety</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-6">Understand the principles of transport systems and road safety to promote responsible and sustainable mobility.</p>
+          <button disabled class="w-full inline-flex items-center justify-center gap-2 border border-gold-600/20 text-gold-700 font-semibold px-4 py-3 rounded text-xs uppercase tracking-widest cursor-not-allowed"><span>Coming Soon</span><i data-lucide="lock" class="w-3 h-3"></i></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATE SHOWCASE -->
+<section id="certificate-section" class="cream-pat py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-xs uppercase tracking-[0.25em] text-gold-700 font-bold mb-3">Achieve · Earn · Be Recognized</p>
+        <h2 class="font-serif-d text-4xl lg:text-5xl font-bold text-navy-800 leading-tight mb-3">Premium Certificate<br/>of Completion</h2>
+        <div class="ornament mb-6 max-w-xs"><i data-lucide="diamond" class="w-3 h-3 text-gold-700"></i></div>
+        <p class="text-gray-700 leading-relaxed mb-3 max-w-xl">Each course comes with a verified Certificate of Completion to recognize your achievement and support your academic and professional growth.</p>
+        <p class="text-sm italic text-gray-500 mb-8 max-w-xl">Honest disclaimer: certificates are non-accredited Certificates of Completion, awarded as recognition of effort and engagement.</p>
+        <button onclick="startCourse()" class="inline-flex items-center gap-2 bg-navy-800 text-white hover:bg-navy-700 font-bold px-6 py-3.5 rounded uppercase text-xs tracking-widest"><i data-lucide="award" class="w-4 h-4"></i><span>Earn Your Certificate</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      </div>
+      <div class="relative">
+        <div class="relative bg-cream-50 rounded-lg border-2 border-gold-700 shadow-2xl overflow-hidden aspect-[1.4/1] p-8">
+          <div class="absolute top-0 left-0 w-20 h-20" style="background: linear-gradient(135deg, #D4AF37 0%, #B8923A 50%, transparent 50%);"></div>
+          <div class="absolute top-0 right-0 w-20 h-20" style="background: linear-gradient(225deg, #D4AF37 0%, #B8923A 50%, transparent 50%);"></div>
+          <div class="absolute bottom-0 left-0 w-20 h-20" style="background: linear-gradient(45deg, #D4AF37 0%, #B8923A 50%, transparent 50%);"></div>
+          <div class="absolute bottom-0 right-0 w-20 h-20" style="background: linear-gradient(315deg, #D4AF37 0%, #B8923A 50%, transparent 50%);"></div>
+          <div class="text-center relative z-10">
+            <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-navy-800 border-2 border-gold-600 flex items-center justify-center"><span class="font-display text-gold-500 font-bold text-sm">AM</span></div>
+            <p class="font-display text-sm font-bold text-navy-800 tracking-widest mb-1">AKRAM ACADEMY</p>
+            <p class="text-[9px] uppercase tracking-widest text-gold-700 mb-4">Certificate of Completion</p>
+            <p class="text-xs italic text-gray-600 mb-2">This is to certify that</p>
+            <p class="font-serif-d text-xl italic text-navy-800 mb-3">Your Name</p>
+            <p class="text-xs text-gray-700 mb-1">has successfully completed the course</p>
+            <p class="font-serif-d text-base font-bold text-navy-800 mb-4 leading-tight">Research Ethics & Peer Review Basics</p>
+            <p class="text-[10px] text-gray-600 mb-3">Issued April 2026</p>
+            <div class="flex justify-center mb-2">
+              <div class="w-10 h-10 rounded-full border border-gold-700 flex items-center justify-center" style="background: linear-gradient(135deg, #E0C158, #B8923A);"><span class="text-[8px] font-bold text-navy-900">AM</span></div>
+            </div>
+            <div class="flex justify-around text-[8px] text-navy-800 font-semibold">
+              <span>Mohd Akram bin Abd Moin</span><span>Akram Academy</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-xs text-gray-500 mt-4 italic">A sample preview. Yours will display your real name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- CATALOG PAGE -->
+<div id="page-catalog" class="page navy-pat min-h-screen">
+  <section class="py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <p class="text-xs uppercase tracking-[0.25em] text-gold-500 font-bold mb-3">Catalogue</p>
+      <h1 class="font-serif-d text-4xl lg:text-5xl font-bold text-white mb-4">All Courses</h1>
+      <div class="ornament max-w-xs mb-12"><i data-lucide="diamond" class="w-3 h-3 text-gold-600"></i></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-navy-700 border border-gold-600/30 rounded-lg overflow-hidden">
+          <div class="bg-navy-800 p-6 relative">
+            <span class="absolute top-3 right-3 text-[9px] uppercase tracking-widest bg-gold-600/20 text-gold-400 px-2 py-1 rounded font-bold">Available</span>
+            <i data-lucide="microscope" class="w-9 h-9 text-gold-500 mb-3"></i>
+            <p class="text-[10px] uppercase tracking-widest text-gold-500 font-bold">Course 01</p>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif-d text-xl font-bold text-white leading-snug mb-3">Research Ethics & Peer Review Basics</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">An accessible introduction to research ethics, citation practice, and the fundamentals of academic peer review.</p>
+            <div class="flex items-center justify-between text-xs text-gold-400 mb-4">
+              <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ~30 min</span>
+              <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3 h-3"></i> 3 modules</span>
+            </div>
+            <button onclick="startCourse()" class="btn-gold w-full inline-flex items-center justify-center gap-2 font-bold px-4 py-2.5 rounded text-xs uppercase tracking-widest"><span>Start course</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+          </div>
+        </article>
+        <article class="bg-navy-800/60 border border-gold-600/15 rounded-lg overflow-hidden opacity-75">
+          <div class="bg-navy-800 p-6 relative">
+            <span class="absolute top-3 right-3 text-[9px] uppercase tracking-widest bg-gray-600/30 text-gray-400 px-2 py-1 rounded font-bold">Soon</span>
+            <i data-lucide="package" class="w-9 h-9 text-gold-700 mb-3"></i>
+            <p class="text-[10px] uppercase tracking-widest text-gold-700 font-bold">Course 02</p>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif-d text-xl font-bold text-white/80 leading-snug mb-3">Introduction to Logistics & Supply Chain</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-4">Fundamentals of logistics flows, supply chain actors, and the Malaysian context.</p>
+            <button disabled class="w-full inline-flex items-center justify-center gap-2 border border-gold-600/20 text-gold-700 font-semibold px-4 py-2.5 rounded text-xs uppercase tracking-widest"><span>In development</span></button>
+          </div>
+        </article>
+        <article class="bg-navy-800/60 border border-gold-600/15 rounded-lg overflow-hidden opacity-75">
+          <div class="bg-navy-800 p-6 relative">
+            <span class="absolute top-3 right-3 text-[9px] uppercase tracking-widest bg-gray-600/30 text-gray-400 px-2 py-1 rounded font-bold">Soon</span>
+            <i data-lucide="shield-check" class="w-9 h-9 text-gold-700 mb-3"></i>
+            <p class="text-[10px] uppercase tracking-widest text-gold-700 font-bold">Course 03</p>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif-d text-xl font-bold text-white/80 leading-snug mb-3">Fundamentals of Transport & Road Safety</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-4">Principles of transport systems and road safety for responsible mobility.</p>
+            <button disabled class="w-full inline-flex items-center justify-center gap-2 border border-gold-600/20 text-gold-700 font-semibold px-4 py-2.5 rounded text-xs uppercase tracking-widest"><span>In development</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- COURSE PAGE -->
+<div id="page-course" class="page bg-cream-50 min-h-screen">
+  <section class="bg-navy-800 text-white py-12">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8">
+      <button onclick="showPage('catalog')" class="inline-flex items-center gap-2 text-sm text-gold-500 hover:text-gold-400 mb-6"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Back to courses</span></button>
+      <p class="text-xs uppercase tracking-[0.25em] text-gold-500 font-bold mb-3">Course 01</p>
+      <h1 class="font-serif-d text-3xl sm:text-4xl font-bold mb-4 leading-tight">Research Ethics and Peer Review Basics</h1>
+      <p class="text-gray-300 leading-relaxed text-lg max-w-3xl mb-8">By the end of this course, you will be able to describe core ethical principles, apply correct citation practice, and explain the purpose and process of peer review.</p>
+      <div class="bg-navy-700 rounded-lg border border-gold-600/30 p-5">
+        <div class="flex items-center justify-between mb-3"><span class="text-xs uppercase tracking-widest text-gold-500 font-bold">Your Progress</span><span id="progress-text" class="text-sm text-gold-400 font-semibold">0 / 3 modules</span></div>
+        <div class="w-full bg-navy-800 rounded-full h-2 overflow-hidden"><div id="progress-bar" class="h-2 rounded-full transition-all duration-500" style="width: 0%; background: linear-gradient(135deg, #E0C158, #B8923A);"></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-4xl mx-auto px-5 sm:px-8 space-y-4" id="module-list"></div></section>
+  <section id="cert-cta" class="py-12 bg-navy-800 text-white" style="display:none;">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+      <i data-lucide="award" class="w-12 h-12 text-gold-500 mx-auto mb-4"></i>
+      <h2 class="font-serif-d text-3xl font-bold mb-4">Course Complete!</h2>
+      <p class="text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto">Congratulations on finishing all three modules. Generate your premium Certificate of Completion below.</p>
+      <button onclick="showPage('certificate')" class="btn-gold inline-flex items-center gap-2 font-bold px-6 py-3 rounded text-xs uppercase tracking-widest"><i data-lucide="download" class="w-4 h-4"></i><span>Generate my certificate</span></button>
+    </div>
+  </section>
+</div>
+
+<!-- LESSON PAGE -->
+<div id="page-lesson" class="page bg-cream-50 min-h-screen">
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <button onclick="showPage('course')" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-navy-800 mb-6"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Back to course</span></button>
+      <div class="mb-8">
+        <p class="text-xs uppercase tracking-[0.25em] text-gold-700 font-bold mb-3" id="lesson-module-label">Module 1</p>
+        <h1 class="font-serif-d text-3xl sm:text-4xl font-bold text-navy-800 leading-tight mb-4" id="lesson-title">Title</h1>
+        <p class="text-gray-600 leading-relaxed" id="lesson-objective"></p>
+      </div>
+      <article class="prose-academic" id="lesson-content"></article>
+      <section class="mt-12 pt-10 border-t border-gold-700/20">
+        <p class="text-xs uppercase tracking-[0.25em] text-gold-700 font-bold mb-3">Module Quiz</p>
+        <h2 class="font-serif-d text-2xl font-bold text-navy-800 mb-6">Check your understanding</h2>
+        <p class="text-gray-700 mb-8">Answer all questions below. You need <strong>70% or higher</strong> to pass this module. You can retake the quiz as many times as you need.</p>
+        <div id="quiz-container" class="space-y-8"></div>
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <button id="submit-quiz-btn" onclick="submitQuiz()" class="inline-flex items-center justify-center gap-2 bg-navy-800 hover:bg-navy-700 text-white font-medium px-6 py-3 rounded transition-colors"><i data-lucide="check-circle" class="w-4 h-4"></i><span>Submit quiz</span></button>
+          <button id="retry-quiz-btn" onclick="retryQuiz()" style="display:none;" class="inline-flex items-center justify-center gap-2 border border-navy-800/30 text-navy-800 hover:border-navy-800 font-medium px-6 py-3 rounded transition-colors"><i data-lucide="rotate-ccw" class="w-4 h-4"></i><span>Try again</span></button>
+          <button id="next-module-btn" onclick="nextModule()" style="display:none;" class="btn-gold inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded"><span id="next-module-label">Continue to next module</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <div id="quiz-result" class="mt-8" style="display:none;"></div>
+      </section>
+    </div>
+  </section>
+</div>
+
+<!-- CERTIFICATE PAGE -->
+<div id="page-certificate" class="page bg-cream-50 min-h-screen">
+  <section class="py-12 lg:py-16">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <p class="text-xs uppercase tracking-[0.25em] text-gold-700 font-bold mb-3">Certificate of Completion</p>
+      <h1 class="font-serif-d text-4xl font-bold text-navy-800 mb-4">Generate Your Certificate</h1>
+      <div class="ornament max-w-xs mb-8"><i data-lucide="diamond" class="w-3 h-3 text-gold-700"></i></div>
+      <div class="bg-white border border-gold-700/20 rounded-lg p-6 sm:p-8 shadow-lg mb-8">
+        <p class="text-gray-700 leading-relaxed mb-6">Enter your full name as you would like it to appear on the certificate. The certificate will be generated as a PDF and downloaded directly to your device.</p>
+        <label class="block">
+          <span class="text-sm font-semibold text-navy-800 mb-2 block">Full name</span>
+          <input id="learner-name" type="text" placeholder="e.g. Siti Nur Aisyah binti Razak" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold-600 focus:border-gold-600" />
+        </label>
+        <p class="text-xs text-gray-400 mt-2">Type carefully — this is how your name will appear.</p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <button onclick="generateCertificate()" class="btn-gold inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded text-xs uppercase tracking-widest"><i data-lucide="download" class="w-4 h-4"></i><span>Download certificate (PDF)</span></button>
+          <button onclick="showPage('course')" class="inline-flex items-center justify-center gap-2 border border-navy-800/30 text-navy-800 hover:border-navy-800 font-medium px-6 py-3 rounded">Back to course</button>
+        </div>
+      </div>
+      <div class="bg-cream-100 border-l-4 border-gold-700 p-5 rounded">
+        <p class="text-xs uppercase tracking-widest text-gold-700 font-bold mb-2">Important</p>
+        <p class="text-sm text-gray-700 leading-relaxed">The Akram Academy Certificate of Completion confirms that you have engaged with this course and passed its assessments. It is <strong>not an accredited academic qualification</strong>. It is intended as recognition of effort and learning.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-navy-900 border-t border-gold-600/20 text-gray-400 py-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded border border-gold-600/40 text-gold-600 font-display font-bold text-sm">AM</span>
+          <span class="font-display font-bold text-white text-sm tracking-wider">AKRAM<br/><span class="text-[10px] text-gold-400 font-normal tracking-[0.2em]">ACADEMY</span></span>
+        </div>
+        <p class="font-serif-d italic text-gold-500 text-sm">Knowledge. Excellence. Impact.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-gold-500 font-bold mb-3">About</p>
+        <p class="text-sm text-gray-400 leading-relaxed">Akram Academy is dedicated to providing high-quality academic courses that empower learners to achieve their full potential.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-gold-500 font-bold mb-3">Quick Links</p>
+        <ul class="space-y-1.5 text-sm">
+          <li><button onclick="showPage('home')" class="hover:text-gold-500">Home</button></li>
+          <li><button onclick="scrollToSection('founder')" class="hover:text-gold-500">Founder</button></li>
+          <li><button onclick="showPage('catalog')" class="hover:text-gold-500">Courses</button></li>
+          <li><a href="cv.pdf" target="_blank" rel="noopener" class="hover:text-gold-500">CV (PDF)</a></li>
+          <li><a href="index.html" class="hover:text-gold-500">Portfolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-gold-500 font-bold mb-3">Connect</p>
+        <a href="mailto:akramdinand57@gmail.com" class="block text-sm text-gray-400 hover:text-gold-500 mb-3">akramdinand57@gmail.com</a>
+        <div class="flex gap-2">
+          <a href="https://www.linkedin.com/in/mohdakramabdmoin" target="_blank" rel="noopener" class="w-9 h-9 rounded border border-gold-600/30 hover:border-gold-600 flex items-center justify-center text-gold-500 hover:text-gold-400" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+          <a href="mailto:akramdinand57@gmail.com" class="w-9 h-9 rounded border border-gold-600/30 hover:border-gold-600 flex items-center justify-center text-gold-500 hover:text-gold-400" aria-label="Email"><i data-lucide="mail" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-gold-600/15 flex flex-col sm:flex-row justify-between gap-3 text-xs text-gray-500">
+      <p>&copy; 2026 Akram Academy. Founded by Mohd Akram bin Abd Moin. All rights reserved.</p>
+      <p class="italic">Certificates are non-accredited Certificates of Completion.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE = {
+  title: "Research Ethics and Peer Review Basics",
+  modules: [
+    { id: 1, title: "Foundations of Research Ethics",
+      objective: "Identify the four core principles of research ethics and recognise common ethical violations.",
+      content: `<h3>What is research ethics?</h3><p>Research ethics is the set of principles and standards that guide how researchers conduct, report, and share their work responsibly. It exists because research has real-world consequences \u2014 for participants, for readers, and for the public who often funds it.</p><p>When researchers ignore ethics, the damage can be severe: vulnerable groups exploited, dangerous treatments wrongly endorsed, careers destroyed, and entire fields losing public trust.</p><h3>The four core principles</h3><h4>1. Respect for persons (autonomy)</h4><p>Research participants are people, not data points. They have the right to make informed decisions about whether to participate. This principle gives us <strong>informed consent</strong>.</p><h4>2. Beneficence ("do good")</h4><p>Researchers have a duty to maximise benefits and minimise risks. This means designing studies so the knowledge gained is worth the burden placed on participants.</p><h4>3. Non-maleficence ("do no harm")</h4><p>Researchers must actively avoid causing harm \u2014 physical, psychological, social, or financial. It is the reason ethical review boards exist.</p><h4>4. Justice (fairness)</h4><p>The benefits and burdens of research must be distributed fairly. Research should not exploit one group for the benefit of another.</p><h3>Common ethical violations</h3><ul><li><strong>Fabrication</strong> \u2014 inventing data that was never collected</li><li><strong>Falsification</strong> \u2014 manipulating real data to make results look better</li><li><strong>Plagiarism</strong> \u2014 presenting someone else's words or ideas as your own</li><li><strong>Failure to obtain consent</strong></li><li><strong>Conflicts of interest</strong> \u2014 failing to disclose biasing relationships</li></ul><h3>The role of ethics committees</h3><p>Most institutions require research involving human participants to be reviewed by an ethics committee (IRB) <em>before</em> the research begins. This is a safeguard, not bureaucracy.</p><blockquote>Ethical research is not a hurdle to clear before doing science \u2014 it is a defining feature of doing science well.</blockquote><h3>Key takeaway</h3><p>Research ethics protects participants, the integrity of knowledge, and the researcher's own credibility. The four principles are not abstract ideas but practical guides for daily decisions.</p>`,
+      quiz: [
+        { q: "Which principle gives rise to the requirement for informed consent?", options: ["Justice","Respect for persons","Beneficence","Confidentiality"], correct: 1, explanation: "Respect for persons recognises participants' right to make informed decisions about participation." },
+        { q: "A researcher invents data that was never collected. This is:", options: ["Plagiarism","Falsification","Fabrication","Conflict of interest"], correct: 2, explanation: "Fabrication = making up data. Falsification = manipulating real data. Plagiarism = using others' work as your own." },
+        { q: "Why does the principle of justice matter?", options: ["Fair pay for researchers","Benefits and burdens distributed fairly","Findings are published","Studies completed on time"], correct: 1, explanation: "Justice ensures no group is exploited or unfairly burdened." },
+        { q: "When does an ethics committee typically review a study?", options: ["After publication","Only if a complaint","Before the research begins","Annually"], correct: 2, explanation: "Ethics review happens before research begins, to protect participants and minimise risks." },
+        { q: "Which is NOT a core principle of research ethics?", options: ["Beneficence","Profitability","Non-maleficence","Justice"], correct: 1, explanation: "The four core principles are respect for persons, beneficence, non-maleficence, and justice." }
+      ]
+    },
+    { id: 2, title: "Citation and Academic Integrity",
+      objective: "Cite sources correctly, recognise different forms of plagiarism, and understand why academic integrity matters.",
+      content: `<h3>Why we cite</h3><p>Citation is not bureaucracy. It is the way scholarship is built, generation after generation. When you cite a source, you do four things at once:</p><ul><li><strong>Give credit</strong> to the people whose work informed yours</li><li><strong>Show your evidence</strong> \u2014 readers can check your claims</li><li><strong>Position your work</strong> in relation to existing knowledge</li><li><strong>Protect yourself</strong> from accusations of plagiarism</li></ul><h3>Different forms of plagiarism</h3><h4>Direct plagiarism</h4><p>Copying word-for-word without quotation marks or attribution.</p><h4>Paraphrase plagiarism</h4><p>Rewording someone's idea slightly without citing them. Still requires a citation.</p><h4>Mosaic plagiarism (patchwriting)</h4><p>Stitching together phrases from multiple sources without proper attribution.</p><h4>Self-plagiarism</h4><p>Reusing your own previously published work as if new. Yes, you can plagiarise yourself.</p><h4>Plagiarism by ghost-writing or AI</h4><p>Submitting work written by someone else as if it were your own. Most universities now require AI use to be disclosed.</p><h3>Good citation behaviour</h3><ul><li>Cite the original source, not a textbook that summarised it</li><li>Do not pad your reference list with sources you have not read</li><li>Avoid citation cartels \u2014 coordinated mutual citation to inflate metrics</li><li>Be accurate with author names, journal titles, years, volumes, pages</li><li>Use a consistent style (APA, Vancouver, IEEE)</li></ul><h3>What about generative AI?</h3><p>AI tools can help with brainstorming and editing, but can also fabricate citations to papers that do not exist. The standard now: <strong>disclose any AI use</strong>. Treat AI output as a draft to be checked, not a source to be trusted.</p><blockquote>If a citation matters to your argument, you should be able to point to the page where the idea actually appears.</blockquote><h3>Key takeaway</h3><p>Academic integrity is not about following rules. It is about being trustworthy.</p>`,
+      quiz: [
+        { q: "Which is a form of plagiarism?", options: ["Citing a peer-reviewed article","Submitting the same essay twice without disclosure","Quoting with author's name","Asking a librarian for help"], correct: 1, explanation: "Submitting the same work twice is self-plagiarism." },
+        { q: "Mosaic plagiarism involves:", options: ["Copying one sentence","Stitching phrases from multiple sources without attribution","Citing too many sources","Asking a friend to proofread"], correct: 1, explanation: "Mosaic plagiarism combines small phrases from different sources without proper citation." },
+        { q: "What is a 'citation cartel'?", options: ["A group developing citation styles","A library catalogue","Coordinated researchers citing each other to inflate metrics","A bibliography of 100+ references"], correct: 2, explanation: "Citation cartels are coordinated citation behaviour designed to manipulate metrics." },
+        { q: "When using generative AI in academic work:", options: ["Never use","Use freely without mentioning","Disclose use, verify all claims and citations","Only for grammar"], correct: 2, explanation: "Disclose AI use. AI can fabricate citations, so verification is essential." },
+        { q: "Why cite the original source rather than a textbook summary?", options: ["Shorter titles","Textbooks not allowed","Accurate credit and lets readers check actual evidence","Increases word count"], correct: 2, explanation: "Citing the original gives credit correctly and lets readers evaluate the original evidence." }
+      ]
+    },
+    { id: 3, title: "Introduction to Peer Review",
+      objective: "Explain what peer review is, describe the typical process, and identify what makes a peer review report helpful.",
+      content: `<h3>What is peer review?</h3><p>Peer review is the process by which research is evaluated by other experts in the same field before publication. It is the "gold standard" of scientific publishing \u2014 not because it is perfect, but because it is the best system for checking research quality at scale.</p><p>When a researcher submits a paper, the editor sends it to two or three independent experts who evaluate methods and conclusions, and recommend whether to publish, revise, or reject.</p><h3>Why peer review exists</h3><ul><li><strong>Quality control</strong> \u2014 identifying methodological errors</li><li><strong>Validation</strong> \u2014 confirming the work meets field standards</li><li><strong>Improvement</strong> \u2014 helping authors make the paper better</li><li><strong>Gatekeeping</strong> \u2014 preventing publication of fraudulent or flawed research</li></ul><h3>Models of peer review</h3><h4>Single-anonymous (single-blind)</h4><p>Reviewers know the author, but not vice versa.</p><h4>Double-anonymous (double-blind)</h4><p>Neither reviewers nor author know each other. Reduces bias.</p><h4>Open peer review</h4><p>Identities are known to all parties.</p><h4>Post-publication peer review</h4><p>The paper is published first; review happens afterwards as comments or critiques.</p><h3>The typical peer review process</h3><ul><li>1. Submission</li><li>2. Editor screening</li><li>3. Reviewer assignment</li><li>4. Review (typically 2\u20136 weeks)</li><li>5. Editor decision: accept, minor revision, major revision, or reject</li><li>6. Author revision and response</li><li>7. Final decision</li></ul><h3>What makes a peer review report helpful?</h3><ul><li><strong>Specific</strong> \u2014 points to particular sections or arguments</li><li><strong>Constructive</strong> \u2014 explains how to fix problems</li><li><strong>Respectful</strong> \u2014 focuses on the work, not the author</li><li><strong>Balanced</strong> \u2014 acknowledges strengths alongside weaknesses</li><li><strong>Honest about uncertainty</strong></li></ul><h3>The hidden labour of peer review</h3><p>Peer review is mostly unpaid. Reviewers do it because they believe in the system and want to support their field. This makes it both fragile and remarkable.</p><blockquote>The reviewer's job is not to prove the author wrong. It is to help the field be more right.</blockquote><h3>Key takeaway</h3><p>Peer review is imperfect but essential. Understanding how it works makes you a better author, reviewer, and reader of research.</p>`,
+      quiz: [
+        { q: "What is the main purpose of peer review?", options: ["To rank researchers","To evaluate research quality before publication","To replace ethics committees","To translate papers"], correct: 1, explanation: "Peer review evaluates the quality and validity of research before publication." },
+        { q: "In double-anonymous peer review:", options: ["Reviewers know author, author does not","Neither knows the other","Both know each other","Paper published first"], correct: 1, explanation: "Double-anonymous review hides identities on both sides to reduce bias." },
+        { q: "Which describes a HELPFUL peer review report?", options: ["Vague, dismissive","Specific, constructive, respectful, balanced","Long and hostile","Short, anonymous"], correct: 1, explanation: "Helpful reviews are specific, constructive, respectful, and balanced." },
+        { q: "When does the editor make the final decision?", options: ["Before reviewers","After publication","After weighing reviews and revisions","Only if author appeals"], correct: 2, explanation: "Editor reads reviews and revisions, then decides. Reviewers recommend; editors decide." },
+        { q: "Why is peer review 'fragile but remarkable'?", options: ["Generous reviewer pay","Depends on largely unpaid voluntary labour","Fully automated","One reviewer per paper"], correct: 1, explanation: "Peer review is mostly voluntary. The system functions because researchers contribute their time." }
+      ]
+    }
+  ]
+};
+
+const STATE = { currentModule: 0, moduleAnswers: [], moduleSubmitted: false, moduleCompleted: [false, false, false] };
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (pageId === 'course') renderCourseModules();
+    if (pageId === 'lesson') renderLesson(STATE.currentModule);
+  }
+  lucide.createIcons();
+}
+
+function scrollToSection(id) {
+  showPage('home');
+  setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 50);
+}
+
+function startCourse() { showPage('course'); }
+
+function renderCourseModules() {
+  const container = document.getElementById('module-list');
+  container.innerHTML = COURSE.modules.map((m, idx) => {
+    const completed = STATE.moduleCompleted[idx];
+    const locked = idx > 0 && !STATE.moduleCompleted[idx - 1];
+    const statusClass = completed ? 'border-green-500' : (locked ? 'opacity-60 border-gray-200' : 'border-gold-700/30');
+    const badge = completed
+      ? '<span class="text-[10px] uppercase tracking-widest bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">Complete</span>'
+      : (locked
+        ? '<span class="text-[10px] uppercase tracking-widest bg-gray-200 text-gray-500 px-2 py-1 rounded font-semibold">Locked</span>'
+        : '<span class="text-[10px] uppercase tracking-widest bg-gold-100 text-gold-800 px-2 py-1 rounded font-semibold">Available</span>');
+    const button = locked
+      ? '<button disabled class="text-sm text-gray-400 font-medium">Complete previous module first</button>'
+      : `<button onclick="openLesson(${idx})" class="inline-flex items-center gap-2 text-sm text-navy-800 hover:text-gold-700 font-semibold"><span>${completed ? 'Review module' : 'Open module'}</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
+    return `<div class="bg-white rounded-lg border ${statusClass} p-6 transition-all"><div class="flex items-start justify-between gap-4"><div class="flex-1"><div class="flex items-center gap-3 mb-2"><span class="font-serif-d font-bold text-2xl text-navy-800">0${idx + 1}</span>${badge}</div><h3 class="text-lg font-bold text-navy-800 mb-2">${m.title}</h3><p class="text-sm text-gray-600 leading-relaxed mb-4">${m.objective}</p>${button}</div>${completed ? '<i data-lucide="check-circle-2" class="w-7 h-7 text-green-600 flex-shrink-0"></i>' : ''}</div></div>`;
+  }).join('');
+  updateProgress();
+  document.getElementById('cert-cta').style.display = STATE.moduleCompleted.every(Boolean) ? 'block' : 'none';
+  lucide.createIcons();
+}
+
+function updateProgress() {
+  const done = STATE.moduleCompleted.filter(Boolean).length;
+  const pct = (done / COURSE.modules.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${done} / ${COURSE.modules.length} modules`;
+}
+
+function openLesson(idx) { STATE.currentModule = idx; STATE.moduleAnswers = []; STATE.moduleSubmitted = false; showPage('lesson'); }
+
+function renderLesson(idx) {
+  const m = COURSE.modules[idx];
+  document.getElementById('lesson-module-label').textContent = `Module ${idx + 1} of ${COURSE.modules.length}`;
+  document.getElementById('lesson-title').textContent = m.title;
+  document.getElementById('lesson-objective').textContent = m.objective;
+  document.getElementById('lesson-content').innerHTML = m.content;
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('submit-quiz-btn').style.display = 'inline-flex';
+  document.getElementById('retry-quiz-btn').style.display = 'none';
+  document.getElementById('next-module-btn').style.display = 'none';
+  renderQuiz(m.quiz);
+}
+
+function renderQuiz(questions) {
+  document.getElementById('quiz-container').innerHTML = questions.map((q, qIdx) =>
+    `<div class="bg-white rounded-lg border border-gray-200 p-6"><p class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Question ${qIdx + 1} of ${questions.length}</p><p class="text-base font-medium text-navy-800 mb-4 leading-snug">${q.q}</p><div class="space-y-2" data-question="${qIdx}">${q.options.map((opt, oIdx) => `<button type="button" onclick="selectOption(${qIdx}, ${oIdx})" data-option="${oIdx}" class="quiz-option w-full text-left border border-gray-200 rounded-md px-4 py-3 text-sm"><span class="font-semibold mr-2">${String.fromCharCode(65 + oIdx)}.</span>${opt}</button>`).join('')}</div><div class="quiz-explanation mt-4" style="display:none;"></div></div>`).join('');
+}
+
+function selectOption(qIdx, oIdx) {
+  if (STATE.moduleSubmitted) return;
+  STATE.moduleAnswers[qIdx] = oIdx;
+  const wrapper = document.querySelector(`[data-question="${qIdx}"]`);
+  wrapper.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+  wrapper.querySelector(`[data-option="${oIdx}"]`).classList.add('selected');
+}
+
+function submitQuiz() {
+  const m = COURSE.modules[STATE.currentModule];
+  const total = m.quiz.length;
+  if (STATE.moduleAnswers.length < total || STATE.moduleAnswers.some(a => a === undefined)) {
+    alert('Please answer all questions before submitting.');
+    return;
+  }
+  STATE.moduleSubmitted = true;
+  let correct = 0;
+  m.quiz.forEach((q, qIdx) => {
+    const wrapper = document.querySelector(`[data-question="${qIdx}"]`);
+    const buttons = wrapper.querySelectorAll('.quiz-option');
+    buttons.forEach(b => b.classList.add('disabled'));
+    const userAnswer = STATE.moduleAnswers[qIdx];
+    if (userAnswer === q.correct) { correct++; buttons[userAnswer].classList.add('correct'); }
+    else { buttons[userAnswer].classList.add('incorrect'); buttons[q.correct].classList.add('correct'); }
+    const exp = wrapper.parentElement.querySelector('.quiz-explanation');
+    exp.style.display = 'block';
+    exp.innerHTML = `<div class="text-sm text-gray-700 bg-cream-50 border-l-4 border-gold-700 p-4 rounded"><p class="font-semibold text-navy-800 mb-1">${userAnswer === q.correct ? '\u2713 Correct' : '\u2717 Not quite'}</p><p>${q.explanation}</p></div>`;
+  });
+  const pct = Math.round((correct / total) * 100);
+  const passed = pct >= 70;
+  const resultDiv = document.getElementById('quiz-result');
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = passed
+    ? `<div class="bg-green-100 border border-green-500 text-green-700 rounded-md p-5"><p class="font-bold text-lg mb-1">\u2713 You passed \u2014 ${correct}/${total} (${pct}%)</p><p class="text-sm">You may continue${STATE.currentModule + 1 === COURSE.modules.length ? ' and generate your certificate' : ' to the next module'}.</p></div>`
+    : `<div class="bg-red-100 border border-red-500 text-red-700 rounded-md p-5"><p class="font-bold text-lg mb-1">Almost \u2014 ${correct}/${total} (${pct}%)</p><p class="text-sm">You need 70% or more. Review the lesson and try again.</p></div>`;
+  document.getElementById('submit-quiz-btn').style.display = 'none';
+  if (passed) {
+    STATE.moduleCompleted[STATE.currentModule] = true;
+    document.getElementById('next-module-btn').style.display = 'inline-flex';
+    const isLast = STATE.currentModule + 1 === COURSE.modules.length;
+    document.getElementById('next-module-label').textContent = isLast ? 'Complete course' : 'Continue to next module';
+  } else {
+    document.getElementById('retry-quiz-btn').style.display = 'inline-flex';
+  }
+  lucide.createIcons();
+}
+
+function retryQuiz() { STATE.moduleAnswers = []; STATE.moduleSubmitted = false; renderLesson(STATE.currentModule); }
+
+function nextModule() {
+  const isLast = STATE.currentModule + 1 === COURSE.modules.length;
+  if (isLast) showPage('course');
+  else openLesson(STATE.currentModule + 1);
+}
+
+// PREMIUM CERTIFICATE PDF
+function generateCertificate() {
+  const name = document.getElementById('learner-name').value.trim();
+  if (!name || name.length < 3) { alert('Please enter your full name (at least 3 characters).'); return; }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  const W = 297, H = 210;
+
+  // Cream paper
+  doc.setFillColor(252, 247, 235); doc.rect(0, 0, W, H, 'F');
+
+  // Borders
+  doc.setDrawColor(184, 146, 58); doc.setLineWidth(2.0); doc.rect(8, 8, W - 16, H - 16);
+  doc.setLineWidth(0.4); doc.rect(10, 10, W - 20, H - 20);
+  doc.setDrawColor(20, 33, 66); doc.setLineWidth(0.6); doc.rect(14, 14, W - 28, H - 28);
+  doc.setDrawColor(212, 175, 55); doc.setLineWidth(0.3); doc.rect(15.5, 15.5, W - 31, H - 31);
+
+  // Corner flourishes
+  const cl = 8; doc.setDrawColor(184, 146, 58); doc.setLineWidth(0.6);
+  [[18, 18, 1, 1], [W-18, 18, -1, 1], [18, H-18, 1, -1], [W-18, H-18, -1, -1]].forEach(([x, y, fx, fy]) => {
+    doc.line(x, y, x + fx*cl, y); doc.line(x, y, x, y + fy*cl);
+    doc.setFillColor(184, 146, 58);
+    doc.circle(x + fx*cl, y, 0.7, 'F'); doc.circle(x, y + fy*cl, 0.7, 'F');
+  });
+
+  // Laurel seal
+  const cx = W / 2, cy = 36;
+  doc.setDrawColor(20, 33, 66); doc.setLineWidth(1.0); doc.circle(cx, cy, 17);
+  doc.setDrawColor(184, 146, 58); doc.setLineWidth(0.5); doc.circle(cx, cy, 15.3);
+  doc.setDrawColor(20, 33, 66); doc.setLineWidth(0.4); doc.circle(cx, cy, 13);
+  doc.setTextColor(20, 33, 66); doc.setFont('times', 'bold'); doc.setFontSize(24);
+  doc.text('AM', cx, cy + 2.5, { align: 'center' });
+  doc.setFontSize(6); doc.text('EST. 2026', cx, cy + 9, { align: 'center' });
+  doc.setFillColor(184, 146, 58); doc.circle(cx, cy - 7, 1, 'F');
+
+  // Header
+  doc.setTextColor(20, 33, 66); doc.setFont('times', 'bold'); doc.setFontSize(12);
+  doc.text('A K R A M   A C A D E M Y', W / 2, 64, { align: 'center' });
+  doc.setTextColor(115, 115, 115); doc.setFont('times', 'italic'); doc.setFontSize(9);
+  doc.text('Open Educational Resources', W / 2, 70, { align: 'center' });
+  doc.setDrawColor(184, 146, 58); doc.setLineWidth(0.4); doc.line(W / 2 - 6, 75, W / 2 + 6, 75);
+
+  // Title with flanking lines
+  doc.setLineWidth(0.5); doc.line(35, 89, 85, 89); doc.line(W - 85, 89, W - 35, 89);
+  doc.setTextColor(20, 33, 66); doc.setFont('times', 'bold'); doc.setFontSize(34);
+  doc.text('Certificate of Completion', W / 2, 91, { align: 'center' });
+
+  // Preamble
+  doc.setFont('times', 'italic'); doc.setFontSize(13); doc.setTextColor(60, 60, 60);
+  doc.text('This is to certify that', W / 2, 108, { align: 'center' });
+
+  // Recipient name
+  doc.setTextColor(20, 33, 66); doc.setFont('times', 'bold'); doc.setFontSize(32);
+  doc.text(name, W / 2, 127, { align: 'center' });
+  doc.setDrawColor(184, 146, 58); doc.setLineWidth(0.5);
+  const nW = Math.min(doc.getTextWidth(name) + 30, 240);
+  doc.line((W - nW) / 2, 132, (W + nW) / 2, 132);
+  doc.setLineWidth(0.2); doc.line((W - nW + 8) / 2, 133.5, (W + nW - 8) / 2, 133.5);
+
+  // Course statement
+  doc.setFont('times', 'normal'); doc.setFontSize(11); doc.setTextColor(60, 60, 60);
+  doc.text('has successfully completed the course', W / 2, 144, { align: 'center' });
+  doc.setFont('times', 'bolditalic'); doc.setFontSize(17); doc.setTextColor(20, 33, 66);
+  doc.text('Research Ethics and Peer Review Basics', W / 2, 155, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(9.5); doc.setTextColor(60, 60, 60);
+  doc.text('demonstrating engagement with the principles of research ethics, citation practice,', W / 2, 165, { align: 'center' });
+  doc.text('and academic peer review.', W / 2, 170, { align: 'center' });
+
+  // Long-form date
+  const today = new Date();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const ords = {1:'first',2:'second',3:'third',4:'fourth',5:'fifth',6:'sixth',7:'seventh',8:'eighth',9:'ninth',10:'tenth',11:'eleventh',12:'twelfth',13:'thirteenth',14:'fourteenth',15:'fifteenth',16:'sixteenth',17:'seventeenth',18:'eighteenth',19:'nineteenth',20:'twentieth',21:'twenty-first',22:'twenty-second',23:'twenty-third',24:'twenty-fourth',25:'twenty-fifth',26:'twenty-sixth',27:'twenty-seventh',28:'twenty-eighth',29:'twenty-ninth',30:'thirtieth',31:'thirty-first'};
+  const dateLong = `Issued on the ${ords[today.getDate()] || today.getDate()} day of ${months[today.getMonth()]}, ${today.getFullYear()}.`;
+  doc.setFont('times', 'italic'); doc.setFontSize(11); doc.setTextColor(60, 75, 110);
+  doc.text(dateLong, W / 2, 178, { align: 'center' });
+
+  // Footer columns
+  const sigY = H - 38;
+  doc.setDrawColor(20, 33, 66); doc.setLineWidth(0.4); doc.line(22, sigY, 105, sigY);
+  doc.setFont('times', 'bold'); doc.setFontSize(10.5); doc.setTextColor(20, 33, 66);
+  doc.text('Mohd Akram bin Abd Moin', 63.5, sigY + 5, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(8.5); doc.setTextColor(184, 146, 58);
+  doc.text('Founder & Course Director', 63.5, sigY + 10, { align: 'center' });
+  doc.setFont('times', 'normal'); doc.setFontSize(7.5); doc.setTextColor(60, 60, 60);
+  doc.text('Postgraduate Teaching Assistant (UPTA)', 63.5, sigY + 14, { align: 'center' });
+  doc.text('MITRANS · Universiti Teknologi MARA', 63.5, sigY + 17.5, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(7); doc.setTextColor(115, 115, 115);
+  doc.text('Gemini Certified Educator · Google for Education', 63.5, sigY + 21, { align: 'center' });
+
+  const certNum = 'AA-' + new Date().getFullYear() + '-' + Date.now().toString(36).toUpperCase().slice(-4);
+  doc.setDrawColor(20, 33, 66); doc.line(W - 105, sigY, W - 22, sigY);
+  doc.setFont('times', 'bold'); doc.setFontSize(10.5); doc.setTextColor(20, 33, 66);
+  doc.text(`Certificate № ${certNum}`, W - 63.5, sigY + 5, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(8.5); doc.setTextColor(184, 146, 58);
+  doc.text('Verified Credential', W - 63.5, sigY + 10, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(7.5); doc.setTextColor(60, 60, 60);
+  doc.text('Verify the authenticity of this credential', W - 63.5, sigY + 14, { align: 'center' });
+  doc.setFont('courier', 'bold'); doc.setFontSize(8); doc.setTextColor(20, 33, 66);
+  doc.text('mohdakram23.github.io', W - 63.5, sigY + 17.5, { align: 'center' });
+  doc.setFont('times', 'italic'); doc.setFontSize(6.8); doc.setTextColor(115, 115, 115);
+  doc.text('or email akramdinand57@gmail.com', W - 63.5, sigY + 21, { align: 'center' });
+
+  // Disclaimer
+  doc.setFont('times', 'italic'); doc.setFontSize(6.5); doc.setTextColor(165, 165, 165);
+  doc.text('An open educational Certificate of Completion. Not an accredited academic qualification.', W / 2, H - 5, { align: 'center' });
+
+  const safeName = name.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`AkramAcademy_Certificate_${safeName}.pdf`);
+
+  const btn = event.target.closest('button');
+  if (btn) {
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> <span>Downloaded!</span>';
+    lucide.createIcons();
+    setTimeout(() => { btn.innerHTML = original; lucide.createIcons(); }, 2500);
+  }
+}
+
+const menuBtn = document.getElementById('menuToggle');
+const menu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
+function closeMobileMenu() { menu.classList.add('hidden'); }
+
+lucide.createIcons();
+</script>
+</body>
+</html>
