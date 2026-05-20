@@ -1,994 +1,1091 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohd Akram bin Abd Moin — Postgraduate Researcher & Teaching Assistant</title>
-
-  <meta name="description" content="Academic portfolio of Mohd Akram bin Abd Moin — postgraduate researcher in Transport and Logistics at MITRANS, Universiti Teknologi MARA. Research in transport safety and public policy." />
-  <meta name="author" content="Mohd Akram bin Abd Moin" />
-  <meta name="keywords" content="Mohd Akram, transport and logistics, road safety, MITRANS, UiTM, academic portfolio, Malaysia" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Mohd Akram bin Abd Moin — Academic Portfolio" />
-  <meta property="og:description" content="Postgraduate researcher and teaching assistant at MITRANS, UiTM. Transport safety and policy-aligned research." />
-  <meta property="og:locale" content="en_MY" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Mohd Akram bin Abd Moin — Academic Portfolio" />
-  <meta name="twitter:description" content="Transport safety research at MITRANS, Universiti Teknologi MARA." />
-
-  <!-- Favicon: inline SVG data URI with initials MA -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231F3864'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23C9A85C'%3EMA%3C/text%3E%3C/svg%3E" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink:    { 900: '#0F1B2D', 800: '#17243A', 700: '#1F3864', 600: '#2E5496', 500: '#4B6B9E' },
-            gold:   { 600: '#B8954A', 500: '#C9A85C', 400: '#D9BC7A', 100: '#F5EDD9' },
-            bone:   { 50:  '#FBF9F4', 100: '#F5F1E8', 200: '#ECE6D6' },
-            slate2: { 900: '#1A202C', 700: '#2D3748', 500: '#4A5568', 400: '#718096', 300: '#A0AEC0', 200: '#CBD5E0', 100: '#EDF2F7' },
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            serif: ['Merriweather', 'Georgia', 'serif'],
-          },
-          boxShadow: {
-            card: '0 1px 2px rgba(15,27,45,0.04), 0 6px 20px -8px rgba(15,27,45,0.08)',
-            cardHover: '0 2px 4px rgba(15,27,45,0.06), 0 20px 40px -12px rgba(15,27,45,0.15)',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Akram bin Abd Moin — Researcher | Teaching Assistant | Transport Safety</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>tailwind.config={theme:{extend:{fontFamily:{display:['Syne','sans-serif'],body:['DM Sans','sans-serif']}}}}</script>
+    <style>
+        :root{
+            --bg:#080818; --bg2:#0d0d22; --fg:#f2f0e8; --muted:#8a8070;
+            --gold:#d4af37; --crimson:#c0392b; --blue:#4a90d9;
+            --gold-dim:rgba(212,175,55,.12); --crimson-dim:rgba(192,57,43,.12); --blue-dim:rgba(74,144,217,.12);
+            --card:rgba(255,255,255,.035); --border:rgba(255,255,255,.07);
+            --gold-glow:rgba(212,175,55,.25); --crimson-glow:rgba(192,57,43,.25); --blue-glow:rgba(74,144,217,.25);
         }
-      }
-    }
-  </script>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:auto;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.3) transparent}
+        ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(212,175,55,.3);border-radius:3px}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden}
 
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+        /* — Canvas & cursor — */
+        #canvas3d{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+        #cursor-glow{position:fixed;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.05) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .3s}
 
-  <!-- Structured data: Person schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mohd Akram bin Abd Moin",
-    "jobTitle": "Postgraduate Researcher and Teaching Assistant",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Universiti Teknologi MARA (UiTM)",
-      "department": "Malaysia Institute of Transport (MITRANS)"
-    },
-    "email": "mailto:akramdinand57@gmail.com",
-    "telephone": "+60 16-621 3854",
-    "address": { "@type": "PostalAddress", "addressCountry": "MY" },
-    "alumniOf": [
-      { "@type": "CollegeOrUniversity", "name": "Universiti Teknologi MARA (UiTM)" },
-      { "@type": "CollegeOrUniversity", "name": "Universiti Selangor (UNISEL)" }
-    ],
-    "knowsAbout": [
-      "Transport Safety", "Road Safety Policy", "Spatial Analysis",
-      "Logistics and Supply Chain", "Outcome-Based Education"
-    ]
-  }
-  </script>
+        /* — Loader — */
+        #loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+        #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-text{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.25em;background:linear-gradient(135deg,var(--gold),#f5e0a0,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .loader-sub{font-size:.68rem;letter-spacing:.3em;color:var(--muted);margin-top:6px;text-transform:uppercase}
+        .loader-bar{width:200px;height:1px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-top:28px}
+        .loader-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--crimson),var(--gold));border-radius:2px;transition:width .3s}
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #2D3748; background-color: #FBF9F4; -webkit-font-smoothing: antialiased; }
-    h1,h2,h3,h4 { font-family: 'Merriweather', Georgia, serif; letter-spacing: -0.01em; }
+        /* — Layout — */
+        main{position:relative;z-index:2}
+        .section-block{min-height:100vh;position:relative;display:flex;align-items:center;padding:80px 24px}
 
-    /* Section number label */
-    .section-num {
-      font-family: 'Merriweather', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      color: #B8954A;
-      letter-spacing: 0.02em;
-    }
+        /* — Navbar — */
+        #navbar{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(8,8,24,.75);backdrop-filter:blur(28px) saturate(1.3);border:1px solid rgba(212,175,55,.12);border-radius:50px;padding:7px 10px;display:flex;align-items:center;gap:2px;transition:transform .4s,opacity .4s}
+        #navbar.nav-hidden{transform:translateX(-50%) translateY(-130%);opacity:0}
+        .nav-link{font-size:.76rem;font-weight:500;color:var(--muted);padding:7px 13px;border-radius:50px;text-decoration:none;transition:color .3s,background .3s;white-space:nowrap}
+        .nav-link:hover{color:var(--fg);background:rgba(255,255,255,.05)}
+        .nav-link.active{color:var(--gold);background:rgba(212,175,55,.08);font-weight:600}
 
-    /* Decorative thin underline for section titles */
-    .title-rule::after {
-      content: "";
-      display: block;
-      width: 48px;
-      height: 2px;
-      background: #1F3864;
-      margin-top: 16px;
-    }
+        /* — Glass — */
+        .glass{background:var(--card);backdrop-filter:blur(20px) saturate(1.2);border:1px solid var(--border);border-radius:16px}
+        .glass-strong{background:rgba(255,255,255,.045);backdrop-filter:blur(30px) saturate(1.3);border:1px solid rgba(255,255,255,.09);border-radius:20px}
+        .glass-gold{background:rgba(212,175,55,.04);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,.14);border-radius:16px}
 
-    /* Fade-in for sections */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease-out, transform 700ms ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* — Gradient border on hover — */
+        .gradient-border{position:relative}
+        .gradient-border::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,var(--gold),var(--crimson),var(--blue),var(--gold));background-size:300% 300%;animation:gradShift 8s ease infinite;z-index:-1;opacity:0;transition:opacity .5s}
+        .gradient-border:hover::before{opacity:1}
+        @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-    /* Active nav link */
-    .nav-link { position: relative; }
-    .nav-link.active { color: #1F3864; }
-    .nav-link.active::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: -6px;
-      height: 2px;
-      background: #C9A85C;
-    }
+        /* — Buttons — */
+        .btn-gold{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-size:.88rem;font-weight:700;color:#080818;background:linear-gradient(135deg,var(--gold),#f5e0a0,var(--gold));background-size:200%;border:none;border-radius:50px;cursor:pointer;transition:transform .3s,box-shadow .3s,background-position .4s;text-decoration:none;letter-spacing:.02em}
+        .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--gold-glow);background-position:right}
+        .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-size:.88rem;font-weight:600;color:var(--fg);background:transparent;border:1px solid rgba(212,175,55,.2);border-radius:50px;cursor:pointer;transition:all .3s;text-decoration:none}
+        .btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.05)}
+        .btn-crimson{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-size:.88rem;font-weight:600;color:var(--fg);background:rgba(192,57,43,.12);border:1px solid rgba(192,57,43,.3);border-radius:50px;cursor:pointer;transition:all .3s;text-decoration:none}
+        .btn-crimson:hover{background:rgba(192,57,43,.22);border-color:var(--crimson);box-shadow:0 4px 20px var(--crimson-glow)}
 
-    /* Subtle paper texture using CSS gradients */
-    .paper {
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(15,27,45,0.025) 1px, transparent 0);
-      background-size: 24px 24px;
-    }
+        /* — Typography — */
+        .hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6vw,4.8rem);font-weight:800;line-height:1.06;letter-spacing:-.02em}
+        .hero-role-tag{display:inline-block;padding:5px 14px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:50px}
+        .section-label{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+        .section-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);opacity:.5}
+        .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3.8vw,2.9rem);font-weight:800;line-height:1.1;margin-bottom:18px}
+        .section-desc{font-size:.98rem;line-height:1.78;color:var(--muted);max-width:600px}
 
-    /* Pull-quote treatment */
-    .pull-quote {
-      font-family: 'Merriweather', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      color: #1F3864;
-    }
+        /* — Divider — */
+        .royal-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.2),rgba(192,57,43,.15),transparent);margin:0 auto}
 
-    /* Hero headshot placeholder ring */
-    .headshot-ring {
-      background:
-        radial-gradient(circle at 30% 30%, #F5EDD9 0%, #ECE6D6 60%, #F5F1E8 100%);
-      box-shadow: inset 0 0 0 1px rgba(185, 149, 74, 0.25), 0 20px 40px -20px rgba(31, 56, 100, 0.25);
-    }
+        /* — Timeline — */
+        .tl-container{position:relative;padding-left:56px}
+        .tl-line{position:absolute;left:18px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,rgba(212,175,55,.6),rgba(192,57,43,.4),rgba(74,144,217,.4),transparent)}
+        .tl-item{position:relative;margin-bottom:44px}
+        .tl-dot{position:absolute;left:-44px;top:10px;width:16px;height:16px;border-radius:50%;border:2px solid rgba(212,175,55,.4);background:var(--bg);z-index:2;transition:all .5s}
+        .tl-dot.lit{border-color:var(--gold);background:var(--gold);box-shadow:0 0 14px var(--gold-glow)}
 
-    /* Prevent tailwind CDN console warning from showing up visually */
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
+        /* — Pub cards — */
+        .pub-card{position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+        .pub-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.18)}
 
-    /* Focus styles */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid #C9A85C;
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
+        /* — Form — */
+        .form-input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:13px 16px;font-size:.88rem;color:var(--fg);font-family:'DM Sans',sans-serif;transition:border-color .3s,background .3s;outline:none}
+        .form-input:focus{border-color:rgba(212,175,55,.35);background:rgba(212,175,55,.03)}
+        .form-input::placeholder{color:var(--muted)}
 
-    /* Print friendliness */
-    @media print {
-      nav, .no-print { display: none !important; }
-      body { background: white; color: black; }
-    }
-  </style>
+        /* — Skill bars — */
+        .skill-bar-track{height:3px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;flex:1}
+        .skill-bar-fill{height:100%;border-radius:4px;width:0%;transition:width 1.3s cubic-bezier(.22,1,.36,1)}
+
+        /* — Cert badge — */
+        .cert-badge{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid var(--border);transition:all .3s}
+        .cert-badge:hover{background:rgba(212,175,55,.05);border-color:rgba(212,175,55,.15)}
+
+        /* — Filter buttons — */
+        .filter-btn{padding:8px 18px;border-radius:50px;font-size:.78rem;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .3s}
+        .filter-btn.active,.filter-btn:hover{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.3);color:var(--gold)}
+
+        /* — Portfolio card — */
+        .portfolio-card{transition:all .35s cubic-bezier(.22,1,.36,1)}
+        .portfolio-card.hidden-card{opacity:0;pointer-events:none;transform:scale(.95)}
+
+        /* — Stat pill — */
+        .stat-pill{display:flex;flex-direction:column;align-items:center;padding:18px 26px;border-radius:18px}
+
+        /* — Modal — */
+        #modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+        #modal-overlay.visible{opacity:1;visibility:visible}
+        #modal-content{max-width:640px;width:92%;max-height:82vh;overflow-y:auto;padding:36px;transform:translateY(30px) scale(.95);transition:transform .4s cubic-bezier(.175,.885,.32,1.275)}
+        #modal-overlay.visible #modal-content{transform:translateY(0) scale(1)}
+
+        /* — Toast — */
+        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);z-index:300;padding:12px 26px;font-size:.85rem;opacity:0;transition:all .4s cubic-bezier(.175,.885,.32,1.275);border-radius:50px}
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+        /* — Globe overlay label — */
+        .globe-label{position:absolute;pointer-events:none;font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;opacity:0;transition:opacity .3s;white-space:nowrap}
+
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+        @media(max-width:768px){.section-block{padding:60px 16px}#navbar{padding:5px 6px}.nav-link{font-size:.68rem;padding:5px 8px}.tl-container{padding-left:40px}.tl-line{left:12px}.tl-dot{left:-30px}}
+    </style>
 </head>
+<body>
 
-<body class="paper">
+<!-- ═══ LOADER ═══ -->
+<div id="loader">
+    <div class="loader-text">MOHD AKRAM</div>
+    <div class="loader-sub">Postgraduate Researcher · MITRANS · UiTM</div>
+    <div class="loader-bar"><div class="loader-fill" id="load-fill"></div></div>
+    <p style="margin-top:14px;font-size:.72rem;color:var(--muted)">Initialising experience...</p>
+</div>
 
-  <!-- ==================== NAV ==================== -->
-  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 bg-bone-50/90 backdrop-blur-md border-b border-slate2-200/60 no-print" aria-label="Primary">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#home" class="flex items-center gap-3 group" aria-label="Home">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-ink-700 text-gold-500 font-serif font-bold text-sm tracking-wider">MA</span>
-          <span class="hidden sm:block font-serif font-bold text-ink-700 text-[15px] leading-tight">
-            Mohd Akram<span class="block text-[11px] font-sans font-normal text-slate2-500 tracking-wide uppercase">bin Abd Moin</span>
-          </span>
-        </a>
+<canvas id="canvas3d"></canvas>
+<div id="cursor-glow"></div>
 
-        <!-- Desktop nav -->
-        <ul class="hidden lg:flex items-center gap-8 text-sm">
-          <li><a href="#about"          class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">About</a></li>
-          <li><a href="#research"       class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">Research</a></li>
-          <li><a href="#publications"   class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">Publications</a></li>
-          <li><a href="#teaching"       class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">Teaching</a></li>
-          <li><a href="#cv"             class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">CV</a></li>
-          <li><a href="#contact"        class="nav-link text-slate2-700 hover:text-ink-700 transition-colors">Contact</a></li>
-          <li><a href="academy.html" class="text-gold-700 hover:text-ink-700 transition-colors font-semibold inline-flex items-center gap-1">Academy <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
-        </ul>
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" aria-label="Main navigation">
+    <a href="#hero"         class="nav-link active" data-section="hero">Home</a>
+    <a href="#portfolio"    class="nav-link"        data-section="portfolio">Portfolio</a>
+    <a href="#journey"      class="nav-link"        data-section="journey">Journey</a>
+    <a href="#research"     class="nav-link"        data-section="research">Research</a>
+    <a href="#publications" class="nav-link"        data-section="publications">Publications</a>
+    <a href="#skills"       class="nav-link"        data-section="skills">Skills</a>
+    <a href="#contact"      class="nav-link"        data-section="contact">Contact</a>
+</nav>
 
-        <a href="#contact" class="hidden lg:inline-flex items-center gap-2 bg-ink-700 hover:bg-ink-800 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors">
-          <span>Get in touch</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
+<main id="main-content">
 
-        <!-- Mobile hamburger -->
-        <button id="menuToggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md text-ink-700 hover:bg-bone-100 transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero" class="section-block" style="min-height:170vh">
+    <div class="w-full max-w-6xl mx-auto">
+        <div class="min-h-screen flex flex-col justify-center">
+            <div id="hero-content" style="margin-top:-40px">
 
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="lg:hidden hidden border-t border-slate2-200/60 bg-bone-50">
-      <ul class="px-5 py-4 space-y-1 text-sm">
-        <li><a href="#about"        class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">About</a></li>
-        <li><a href="#research"     class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">Research</a></li>
-        <li><a href="#publications" class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">Publications</a></li>
-        <li><a href="#teaching"     class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">Teaching</a></li>
-        <li><a href="#certifications" class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">Certifications</a></li>
-        <li><a href="#cv"           class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">CV & Portfolio</a></li>
-        <li><a href="#contact"      class="block py-2.5 px-3 rounded hover:bg-bone-100 text-slate2-700">Contact</a></li>
-        <li><a href="academy.html"  class="block py-2.5 px-3 rounded bg-gold-100 text-gold-700 font-semibold">Akram Academy →</a></li>
-      </ul>
-    </div>
-  </nav>
+                <!-- Role tags -->
+                <div class="flex flex-wrap gap-2 mb-7" id="hero-tags">
+                    <span class="hero-role-tag glass-gold" style="color:var(--gold)">Researcher</span>
+                    <span class="hero-role-tag glass" style="color:var(--crimson);border:1px solid rgba(192,57,43,.2)">Teaching Assistant</span>
+                    <span class="hero-role-tag glass" style="color:var(--blue);border:1px solid rgba(74,144,217,.2)">Transport Safety</span>
+                    <span class="hero-role-tag glass" style="color:var(--muted);border:1px solid var(--border)">MITRANS · UiTM</span>
+                </div>
 
-  <!-- ==================== HERO ==================== -->
-  <header id="home" class="relative pt-28 lg:pt-36 pb-16 lg:pb-24">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                <!-- Name -->
+                <h1 class="hero-title" id="hero-title">
+                    <span style="background:linear-gradient(135deg,var(--fg) 0%,rgba(242,240,232,.55) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Mohd Akram</span><br>
+                    <span style="background:linear-gradient(135deg,var(--gold) 0%,#f5e0a0 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%">bin Abd Moin</span>
+                </h1>
 
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <p class="section-num text-sm mb-5">— Academic Portfolio</p>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-ink-800 leading-[1.08] mb-5">
-            Mohd Akram<br/>
-            <span class="text-ink-700">bin Abd Moin</span>
-          </h1>
-          <p class="text-lg sm:text-xl text-slate2-700 font-light leading-relaxed max-w-2xl mb-4">
-            Postgraduate researcher and teaching assistant working at the intersection of
-            <span class="text-ink-700 font-medium">transport safety</span>,
-            <span class="text-ink-700 font-medium">spatial analytics</span>, and
-            <span class="text-ink-700 font-medium">public policy</span>.
-          </p>
-          <p class="text-base text-slate2-500 mb-8 max-w-xl">
-            Malaysia Institute of Transport (MITRANS) &middot; Universiti Teknologi MARA
-          </p>
+                <p id="hero-subtitle" style="font-size:clamp(.9rem,1.8vw,1.15rem);font-weight:300;color:var(--muted);margin-top:18px;max-width:560px;line-height:1.85">
+                    Postgraduate researcher at Malaysia Institute of Transport (MITRANS), Universiti Teknologi MARA. Advancing road safety through spatial analytics, evidence-based policy, and bilingual education.
+                </p>
 
-          <div class="flex flex-wrap gap-3">
-            <a href="#research" class="inline-flex items-center gap-2 bg-ink-700 hover:bg-ink-800 text-white font-medium px-5 py-3 rounded-md transition-colors shadow-card hover:shadow-cardHover">
-              <span>Read my research</span>
-              <i data-lucide="book-open" class="w-4 h-4"></i>
-            </a>
-            <a href="#contact" class="inline-flex items-center gap-2 border border-ink-700/30 hover:border-ink-700 text-ink-700 font-medium px-5 py-3 rounded-md transition-colors">
-              <span>Contact me</span>
-              <i data-lucide="mail" class="w-4 h-4"></i>
-            </a>
-          </div>
+                <!-- CTAs -->
+                <div class="flex flex-wrap gap-4 mt-8" id="hero-ctas">
+                    <a href="#portfolio"    class="btn-gold"><i class="fas fa-compass"></i> Explore Portfolio</a>
+                    <a href="#publications" class="btn-outline"><i class="fas fa-file-alt"></i> Publications</a>
+                    <a href="#contact"      class="btn-outline"><i class="fas fa-envelope"></i> Get in Touch</a>
+                </div>
+
+                <!-- Stats -->
+                <div class="flex flex-wrap gap-4 mt-11" id="hero-stats">
+                    <div class="stat-pill glass-gold">
+                        <span class="text-2xl font-bold" style="color:var(--gold)">35+</span>
+                        <p class="text-xs mt-1" style="color:var(--muted)">Certifications</p>
+                    </div>
+                    <div class="stat-pill glass">
+                        <span class="text-2xl font-bold" style="color:var(--crimson)">2+</span>
+                        <p class="text-xs mt-1" style="color:var(--muted)">Publications</p>
+                    </div>
+                    <div class="stat-pill glass">
+                        <span class="text-2xl font-bold" style="color:var(--blue)">9 yrs</span>
+                        <p class="text-xs mt-1" style="color:var(--muted)">Data Coverage</p>
+                    </div>
+                    <div class="stat-pill glass">
+                        <span class="text-2xl font-bold" style="color:var(--gold)">MSc</span>
+                        <p class="text-xs mt-1" style="color:var(--muted)">In Progress · UiTM</p>
+                    </div>
+                </div>
+
+                <!-- Institution badge -->
+                <div class="flex items-center gap-3 mt-9 glass-gold inline-flex" style="padding:11px 18px;border-radius:14px;max-width:fit-content">
+                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);display:flex;align-items:center;justify-content:center">
+                        <i class="fas fa-university" style="color:var(--gold);font-size:.8rem"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold" style="color:var(--fg)">Malaysia Institute of Transport (MITRANS)</p>
+                        <p class="text-xs" style="color:var(--muted)">Universiti Teknologi MARA · Shah Alam, Malaysia</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
-          <div class="relative w-64 sm:w-72 lg:w-80">
-            <!-- Decorative gold offset frame -->
-            <div class="absolute -top-4 -left-4 w-full h-full border-2 border-gold-500/50 rounded-2xl" aria-hidden="true"></div>
-            <!-- Headshot -->
-            <img src="portrait-hero.jpg"
-                 alt="Mohd Akram bin Abd Moin"
-                 class="relative w-full aspect-[4/5] object-cover rounded-2xl shadow-cardHover"
-                 loading="eager"
-                 width="900" height="1110" />
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="hidden lg:flex items-center gap-2 text-slate2-400 text-xs uppercase tracking-widest mt-20">
-        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
-        <span>Scroll to explore</span>
-      </div>
     </div>
-  </header>
+</section>
 
-  <!-- ==================== ABOUT ==================== -->
-  <section id="about" class="reveal py-20 lg:py-28 bg-white border-t border-slate2-100">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">I.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">About</h2>
+<!-- Divider -->
+<div class="royal-divider" style="max-width:900px;position:relative;z-index:2"></div>
 
-      <div class="grid lg:grid-cols-12 gap-12">
-        <!-- Bio -->
-        <div class="lg:col-span-7">
-          <p class="text-lg leading-relaxed text-slate2-700 mb-5">
-            I am a postgraduate researcher and teaching assistant at the
-            <span class="text-ink-700 font-medium">Malaysia Institute of Transport (MITRANS), Universiti Teknologi MARA</span>,
-            completing my Master of Science in Transport and Logistics.
-          </p>
-          <p class="text-base leading-relaxed text-slate2-700 mb-5">
-            My work focuses on transport safety and public policy, using quantitative methods and open public data to support evidence-based decisions. I am drawn to research that translates careful analysis into real improvements in public outcomes.
-          </p>
-          <p class="text-base leading-relaxed text-slate2-700">
-            In the classroom, I am committed to outcome-based teaching, careful assessment design, and the thoughtful use of AI to widen access to learning rather than narrow it. I write and teach in both Bahasa Malaysia and English.
-          </p>
-
-          <div class="mt-8 p-5 border-l-2 border-gold-500 bg-bone-50">
-            <p class="pull-quote text-lg leading-relaxed">
-              &ldquo;Good research should ultimately read like a careful argument for a better public decision.&rdquo;
-            </p>
-          </div>
+<!-- ══════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════ -->
+<section id="portfolio" class="section-block">
+    <div class="w-full max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <p class="section-label justify-center">Portfolio</p>
+            <h2 class="section-title">Selected Works</h2>
+            <p class="section-desc mx-auto">Research initiatives, educational contributions, and professional projects in transport safety, spatial analysis, and logistics.</p>
         </div>
-
-        <!-- Education Timeline -->
-        <div class="lg:col-span-5">
-          <h3 class="text-xs uppercase tracking-widest text-slate2-400 font-sans font-semibold mb-6">Education</h3>
-          <ol class="relative border-l-2 border-slate2-200 pl-6 space-y-8">
-
-            <li class="relative">
-              <span class="absolute -left-[34px] top-1 w-4 h-4 bg-ink-700 rounded-full ring-4 ring-bone-50" aria-hidden="true"></span>
-              <p class="text-xs uppercase tracking-widest text-gold-600 font-semibold mb-1">2025 &ndash; Present</p>
-              <h4 class="text-base font-bold text-ink-800 mb-1">Master of Science, Transport and Logistics</h4>
-              <p class="text-sm text-slate2-500">Universiti Teknologi MARA (UiTM)</p>
-              <p class="text-xs text-slate2-400 mt-1">Final Semester &middot; Expected completion 2026</p>
-            </li>
-
-            <li class="relative">
-              <span class="absolute -left-[34px] top-1 w-4 h-4 bg-ink-600 rounded-full ring-4 ring-bone-50" aria-hidden="true"></span>
-              <p class="text-xs uppercase tracking-widest text-gold-600 font-semibold mb-1">2021 &ndash; 2023</p>
-              <h4 class="text-base font-bold text-ink-800 mb-1">Bachelor of Industrial Management (Hons.)</h4>
-              <p class="text-sm text-slate2-500">Logistics and Supply Chain &middot; Universiti Selangor (UNISEL)</p>
-            </li>
-
-            <li class="relative">
-              <span class="absolute -left-[34px] top-1 w-4 h-4 bg-ink-500 rounded-full ring-4 ring-bone-50" aria-hidden="true"></span>
-              <p class="text-xs uppercase tracking-widest text-gold-600 font-semibold mb-1">2018 &ndash; 2021</p>
-              <h4 class="text-base font-bold text-ink-800 mb-1">Diploma in Business Management</h4>
-              <p class="text-sm text-slate2-500">Universiti Selangor (UNISEL)</p>
-            </li>
-
-          </ol>
+        <div class="flex flex-wrap justify-center gap-3 mb-9" id="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="research">Research</button>
+            <button class="filter-btn" data-filter="teaching">Teaching</button>
+            <button class="filter-btn" data-filter="logistics">Logistics</button>
         </div>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolio-grid"></div>
     </div>
-  </section>
+</section>
 
-  <!-- ==================== RESEARCH ==================== -->
-  <section id="research" class="reveal py-20 lg:py-28">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">II.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">Research</h2>
+<div class="royal-divider" style="max-width:700px;position:relative;z-index:2"></div>
 
-      <!-- Current research card (details withheld prior to publication) -->
-      <article class="bg-white rounded-lg shadow-card border border-slate2-100 overflow-hidden mb-12">
-        <div class="lg:flex">
-          <!-- Side label -->
-          <div class="bg-ink-700 text-white p-8 lg:p-10 lg:w-64 flex-shrink-0 flex flex-col justify-between">
+<!-- ══════════════════════════════════════
+     ACADEMIC JOURNEY
+══════════════════════════════════════ -->
+<section id="journey" class="section-block">
+    <div class="w-full max-w-4xl mx-auto">
+        <div class="mb-14">
+            <p class="section-label">Academic Journey</p>
+            <h2 class="section-title">The Path of Knowledge</h2>
+            <p class="section-desc">A progression from foundational business studies through industrial management to postgraduate research in transport and logistics.</p>
+        </div>
+        <div class="tl-container">
+            <div class="tl-line"></div>
+            <div id="timeline-items"></div>
+        </div>
+        <!-- Current role banner -->
+        <div class="glass-gold mt-10 p-6 flex items-center gap-5" style="border-radius:18px">
+            <div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#b8860b);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <i class="fas fa-flask" style="color:#080818;font-size:.9rem"></i>
+            </div>
+            <div class="flex-1">
+                <p class="text-xs font-bold tracking-widest uppercase" style="color:var(--gold)">Currently Active</p>
+                <h4 class="font-bold mt-0.5" style="font-family:'Syne',sans-serif">Postgraduate Teaching Assistant (UPTA) · MITRANS, UiTM</h4>
+                <p class="text-sm mt-0.5" style="color:var(--muted)">2026–Present · OBE implementation, AI-assisted pedagogy, student research mentoring</p>
+            </div>
+            <span class="hidden md:inline-block text-xs px-3 py-1.5 rounded-full flex-shrink-0" style="background:rgba(212,175,55,.12);color:var(--gold);border:1px solid rgba(212,175,55,.25)">Active</span>
+        </div>
+    </div>
+</section>
+
+<div class="royal-divider" style="max-width:700px;position:relative;z-index:2"></div>
+
+<!-- ══════════════════════════════════════
+     RESEARCH
+══════════════════════════════════════ -->
+<section id="research" class="section-block">
+    <div class="w-full max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Left -->
             <div>
-              <p class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-3">Current Research</p>
-              <p class="font-serif text-3xl font-black leading-none mb-2">MSc</p>
-              <p class="text-sm text-slate2-200">Final Semester, 2026</p>
-            </div>
-            <div class="mt-8 lg:mt-0">
-              <p class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-2">Affiliation</p>
-              <p class="text-sm leading-snug">MITRANS<br/>Universiti Teknologi MARA</p>
-            </div>
-          </div>
+                <p class="section-label">Primary Research</p>
+                <h2 class="section-title">Spatial Analysis of Motorcycle Fatality Trends in Malaysia</h2>
+                <p class="section-desc mb-6">A comprehensive spatial examination of motorcycle fatality patterns across Malaysian regions from 2016 to 2024 — mapping distribution trends, identifying high-concentration zones, and informing national transport policy.</p>
 
-          <!-- Body -->
-          <div class="p-8 lg:p-10 flex-1">
-            <h3 class="text-xl sm:text-2xl font-bold text-ink-800 leading-snug mb-4">
-              Master&rsquo;s Thesis &mdash; Transport Safety and Policy in Malaysia
-            </h3>
-            <p class="text-slate2-700 leading-relaxed mb-6">
-              A quantitative study in road safety and national transport policy, supervised at the Malaysia Institute of Transport. Full thesis details will be shared upon completion and publication.
-            </p>
-            <p class="text-sm text-slate2-500 italic">
-              Available for academic discussion on request.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- Research areas grid -->
-      <h3 class="text-xs uppercase tracking-widest text-slate2-400 font-sans font-semibold mb-6">Research Areas</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-white rounded-lg p-6 border border-slate2-100 shadow-card hover:shadow-cardHover transition-shadow">
-          <div class="w-10 h-10 rounded bg-ink-700/5 flex items-center justify-center mb-4">
-            <i data-lucide="shield-alert" class="w-5 h-5 text-ink-700"></i>
-          </div>
-          <h4 class="text-base font-bold text-ink-800 mb-2">Road Safety & Transport Policy</h4>
-          <p class="text-sm text-slate2-500 leading-relaxed">National-level analysis of transport safety aligned with public policy frameworks.</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 border border-slate2-100 shadow-card hover:shadow-cardHover transition-shadow">
-          <div class="w-10 h-10 rounded bg-ink-700/5 flex items-center justify-center mb-4">
-            <i data-lucide="map" class="w-5 h-5 text-ink-700"></i>
-          </div>
-          <h4 class="text-base font-bold text-ink-800 mb-2">Spatial & Temporal Analysis</h4>
-          <p class="text-sm text-slate2-500 leading-relaxed">Longitudinal trend assessment and geographic visualisation of transport outcomes.</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 border border-slate2-100 shadow-card hover:shadow-cardHover transition-shadow">
-          <div class="w-10 h-10 rounded bg-ink-700/5 flex items-center justify-center mb-4">
-            <i data-lucide="package" class="w-5 h-5 text-ink-700"></i>
-          </div>
-          <h4 class="text-base font-bold text-ink-800 mb-2">Logistics & Supply Chain</h4>
-          <p class="text-sm text-slate2-500 leading-relaxed">Sustainability, green adoption, and AI integration in Malaysian supply chains.</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 border border-slate2-100 shadow-card hover:shadow-cardHover transition-shadow">
-          <div class="w-10 h-10 rounded bg-ink-700/5 flex items-center justify-center mb-4">
-            <i data-lucide="line-chart" class="w-5 h-5 text-ink-700"></i>
-          </div>
-          <h4 class="text-base font-bold text-ink-800 mb-2">Data-Driven Policy Monitoring</h4>
-          <p class="text-sm text-slate2-500 leading-relaxed">Standardised indicators for evidence-based transport policy evaluation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PUBLICATIONS ==================== -->
-  <section id="publications" class="reveal py-20 lg:py-28 bg-white border-t border-slate2-100">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">III.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">Publications</h2>
-
-      <div class="space-y-6">
-
-        <!-- Publication 1 -->
-        <article class="bg-bone-50 border border-slate2-100 rounded-lg p-6 sm:p-8 flex flex-col sm:flex-row gap-6">
-          <div class="flex-shrink-0">
-            <div class="w-14 h-14 rounded bg-ink-700 text-gold-500 flex items-center justify-center font-serif font-black text-lg">01</div>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-lg sm:text-xl font-bold text-ink-800 leading-snug mb-3">
-              Factors That Influence Purchase Intentions to Buy Green Products Among Malaysians
-            </h3>
-            <p class="text-sm text-slate2-600 leading-relaxed mb-4 font-serif italic">
-              Abd Moin, M. A. (2024). <span class="not-italic">Factors that influence purchase intentions to buy green products among Malaysians.</span> Zenodo. https://doi.org/10.5281/zenodo.14175083
-            </p>
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="https://doi.org/10.5281/zenodo.14175083" target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center gap-2 bg-ink-700 hover:bg-ink-800 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors">
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-                <span>View publication</span>
-              </a>
-              <span class="text-xs text-slate2-400">DOI: 10.5281/zenodo.14175083</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Publication 2 -->
-        <article class="bg-bone-50 border border-slate2-100 rounded-lg p-6 sm:p-8 flex flex-col sm:flex-row gap-6">
-          <div class="flex-shrink-0">
-            <div class="w-14 h-14 rounded bg-ink-700 text-gold-500 flex items-center justify-center font-serif font-black text-lg">02</div>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-lg sm:text-xl font-bold text-ink-800 leading-snug mb-3">
-              AI-Driven Green Revolution: Revolutionizing Malaysia&rsquo;s Supply Chains for a Sustainable Future
-            </h3>
-            <p class="text-sm text-slate2-600 leading-relaxed mb-4 font-serif italic">
-              Abd Moin, M. A. (2024). <span class="not-italic">AI-driven green revolution: Revolutionizing Malaysia&rsquo;s supply chains for a sustainable future.</span> Zenodo. https://doi.org/10.5281/zenodo.14165633
-            </p>
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="https://doi.org/10.5281/zenodo.14165633" target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center gap-2 bg-ink-700 hover:bg-ink-800 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors">
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-                <span>View publication</span>
-              </a>
-              <span class="text-xs text-slate2-400">DOI: 10.5281/zenodo.14165633</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="text-sm text-slate2-400 italic mt-8">
-        Additional manuscripts derived from the Master&rsquo;s research on transport safety and policy are in preparation, with planned submission to indexed journals in 2026&ndash;2027.
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================== TEACHING ==================== -->
-  <section id="teaching" class="reveal py-20 lg:py-28">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">IV.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">Teaching</h2>
-
-      <!-- Current role -->
-      <div class="bg-white border border-slate2-100 rounded-lg p-6 sm:p-8 shadow-card mb-12">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gold-600 font-semibold mb-2">Current Role</p>
-            <h3 class="text-xl sm:text-2xl font-bold text-ink-800">Postgraduate Teaching Assistant (UPTA)</h3>
-            <p class="text-slate2-500 mt-1">Malaysia Institute of Transport (MITRANS) &middot; Universiti Teknologi MARA</p>
-          </div>
-          <span class="self-start inline-flex items-center gap-2 bg-ink-700/5 border border-ink-700/10 text-ink-700 text-xs font-medium px-3 py-1.5 rounded-full">
-            <span class="w-1.5 h-1.5 rounded-full bg-ink-700 animate-pulse"></span>
-            2026 &ndash; Present
-          </span>
-        </div>
-        <p class="text-slate2-700 leading-relaxed">
-          Supporting the delivery of undergraduate coursework in transport and logistics; facilitating tutorial sessions; assisting with assessment moderation and marking under the supervision of the principal instructor; and mentoring students on research skills and the effective use of institutional learning platforms.
-        </p>
-      </div>
-
-      <!-- Competency grid -->
-      <h3 class="text-xs uppercase tracking-widest text-slate2-400 font-sans font-semibold mb-6">Teaching Competencies</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="target" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">OBE Implementation</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">CLO&ndash;PLO mapping aligned with MQF 2.0 learning outcome clusters.</p>
-        </div>
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="table-2" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">JSU Development</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">Jadual Spesifikasi Ujian design across Bloom&rsquo;s cognitive levels.</p>
-        </div>
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="clipboard-check" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">Assessment Design</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">Balanced formative and summative assessment construction.</p>
-        </div>
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="bot" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">AI-Assisted Teaching</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">Responsible integration of generative AI in lesson and rubric design.</p>
-        </div>
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="monitor-play" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">ODL Delivery</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">Asynchronous and blended instruction via OpenLearning, Udemy, Khan Academy.</p>
-        </div>
-
-        <div class="p-5 rounded-lg border border-slate2-100 bg-white hover:border-gold-400 transition-colors">
-          <i data-lucide="users" class="w-5 h-5 text-gold-600 mb-3"></i>
-          <h4 class="text-sm font-bold text-ink-800 mb-1">Student Mentoring</h4>
-          <p class="text-xs text-slate2-500 leading-relaxed">Guidance on academic writing, research skills, and learning platforms.</p>
-        </div>
-
-      </div>
-
-      <!-- Philosophy pull quote -->
-      <div class="border-l-2 border-gold-500 pl-6 sm:pl-8 max-w-3xl">
-        <p class="text-xs uppercase tracking-widest text-slate2-400 font-semibold mb-3">Teaching Philosophy</p>
-        <p class="pull-quote text-xl sm:text-2xl leading-relaxed">
-          Students learn best when outcomes are clear, assessment is honest, and technology serves pedagogy rather than the other way around. Every assessment item should earn its place by measuring something meaningful &mdash; not by filling a rubric.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CERTIFICATIONS ==================== -->
-  <section id="certifications" class="reveal py-20 lg:py-28 bg-white border-t border-slate2-100">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">V.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-4">Certifications & Professional Development</h2>
-      <p class="text-slate2-500 max-w-2xl mb-12">A comprehensive record of completed programmes in academic teaching, research practice, peer review, and professional management.</p>
-
-      <!-- Three featured programmes -->
-      <div class="grid md:grid-cols-3 gap-5 mb-12">
-
-        <!-- Featured #1: Young Lecturer Program -->
-        <div class="bg-ink-700 text-white rounded-lg p-6 shadow-card">
-          <div class="w-11 h-11 rounded bg-gold-500/20 flex items-center justify-center mb-4">
-            <i data-lucide="award" class="w-5 h-5 text-gold-500"></i>
-          </div>
-          <p class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold mb-2">Featured Programme</p>
-          <h3 class="text-base font-bold leading-snug mb-1">Young Lecturer Program 2.0 with AI</h3>
-          <p class="text-xs text-slate2-300 mb-3">Innovative University College (IUC)</p>
-          <p class="text-xs text-slate2-200 leading-relaxed">
-            Structured preparation for early-career academics, with emphasis on AI-integrated pedagogy, lesson design, and the ethical use of generative tools in higher education.
-          </p>
-        </div>
-
-        <!-- Featured #2: Gemini Certified Educator -->
-        <div class="bg-ink-700 text-white rounded-lg p-6 shadow-card">
-          <div class="w-11 h-11 rounded bg-gold-500/20 flex items-center justify-center mb-4">
-            <i data-lucide="sparkles" class="w-5 h-5 text-gold-500"></i>
-          </div>
-          <p class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold mb-2">Featured Credential</p>
-          <h3 class="text-base font-bold leading-snug mb-1">Gemini Certified Educator</h3>
-          <p class="text-xs text-slate2-300 mb-3">Google for Education &middot; Apr 2026 &ndash; Apr 2029</p>
-          <p class="text-xs text-slate2-200 leading-relaxed">
-            Google's official certification for educators using Gemini AI in teaching. Validates competence in applying Google AI tools effectively and responsibly in educational settings.
-          </p>
-        </div>
-
-        <!-- Featured #3: Certified Peer Reviewer Course -->
-        <div class="bg-ink-700 text-white rounded-lg p-6 shadow-card">
-          <div class="w-11 h-11 rounded bg-gold-500/20 flex items-center justify-center mb-4">
-            <i data-lucide="shield-check" class="w-5 h-5 text-gold-500"></i>
-          </div>
-          <p class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold mb-2">Featured Credential</p>
-          <h3 class="text-base font-bold leading-snug mb-1">Certified Peer Reviewer Course</h3>
-          <p class="text-xs text-slate2-300 mb-3">Cell Press &amp; The Lancet &middot; Apr 2026</p>
-          <p class="text-xs text-slate2-200 leading-relaxed">
-            A formal peer-review certification issued by two of the most respected scientific publishers, awarded upon completion of the Web of Science Academy Certified Peer Reviewer track.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Three categorized columns -->
-      <div class="grid lg:grid-cols-3 gap-10">
-
-        <!-- ===== Teaching, Pedagogy & Academic Development ===== -->
-        <div>
-          <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate2-200">
-            <div class="w-10 h-10 rounded bg-ink-700 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="graduation-cap" class="w-5 h-5 text-gold-500"></i>
-            </div>
-            <h3 class="text-base font-bold text-ink-800 leading-tight">Teaching, Pedagogy &<br/>Academic Development</h3>
-          </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700"><span class="font-medium text-ink-800">Young Lecturer Program 2.0 with AI</span><br/><span class="text-xs text-slate2-400">Innovative University College (IUC)</span></span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700"><span class="font-medium text-ink-800">Gemini Certified Educator</span><br/><span class="text-xs text-slate2-400">Google for Education &middot; Apr 2026 &ndash; Apr 2029</span></span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Microsoft Educator Academy</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Microsoft Educator Trainer Academy</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Microsoft 365 Teacher Academy</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">OneNote Teacher Academy</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">UNESCO &mdash; Rapid Teacher Training in Distance Education</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Saylor Academy &mdash; Teaching Assistance</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">UNITAR &mdash; Training of Trainers (ToT)</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Monash University &mdash; Basics of Design Thinking</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Sunway University &mdash; Secrets to Success as a Freshman</span></li>
-          </ul>
-        </div>
-
-        <!-- ===== Research, Publication & Peer Review ===== -->
-        <div>
-          <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate2-200">
-            <div class="w-10 h-10 rounded bg-ink-700 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="microscope" class="w-5 h-5 text-gold-500"></i>
-            </div>
-            <h3 class="text-base font-bold text-ink-800 leading-tight">Research, Publication &<br/>Peer Review</h3>
-          </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700"><span class="font-medium text-ink-800">Certified Peer Reviewer Course</span><br/><span class="text-xs text-slate2-400">Cell Press &amp; The Lancet &middot; Apr 2026</span></span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">World Health Organization (WHO) &mdash; Research Ethics Online Training</span></li>
-
-            <!-- Web of Science Academy: parent + nested modules with dates -->
-            <li class="pt-2">
-              <div class="flex gap-3 items-start mb-2">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i>
-                <span class="font-medium text-ink-800">Web of Science Academy</span>
-              </div>
-              <ul class="ml-7 pl-3 border-l border-slate2-200 space-y-1.5 text-[13px] text-slate2-600">
-                <li>&middot; Mentoring in Peer Review <span class="text-slate2-400 text-[11px]">(Apr 2026)</span></li>
-                <li>&middot; Good Citation Behavior <span class="text-slate2-400 text-[11px]">(Dec 2025)</span></li>
-                <li>&middot; Co-reviewing with a Mentor <span class="text-slate2-400 text-[11px]">(Dec 2025)</span></li>
-                <li>&middot; Reviewing in the Humanities <span class="text-slate2-400 text-[11px]">(Dec 2025)</span></li>
-                <li>&middot; Introduction to the Certified Peer Reviewer Course</li>
-                <li>&middot; What to Expect from the Certified Peer Reviewer Course</li>
-                <li>&middot; What is Peer Review? Why Your Reviews?</li>
-                <li>&middot; Models of Peer Review</li>
-                <li>&middot; The Typical Peer Review Process</li>
-                <li>&middot; How to Write a Helpful Peer Review Report</li>
-              </ul>
-            </li>
-
-            <!-- Elsevier Researcher Academy: parent + nested modules with dates -->
-            <li class="pt-2">
-              <div class="flex gap-3 items-start mb-2">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i>
-                <span class="font-medium text-ink-800">Elsevier Researcher Academy</span>
-              </div>
-              <ul class="ml-7 pl-3 border-l border-slate2-200 space-y-1.5 text-[13px] text-slate2-600">
-                <li>&middot; Best Practices for Writing Your Research Paper <span class="text-slate2-400 text-[11px]">(Dec 2025)</span></li>
-                <li>&middot; Research Data Management Plan <span class="text-slate2-400 text-[11px]">(Nov 2024)</span></li>
-                <li>&middot; Gen AI Use in Research <span class="text-slate2-400 text-[11px]">(Nov 2024)</span></li>
-                <li>&middot; Data Repositories <span class="text-slate2-400 text-[11px]">(Nov 2024)</span></li>
-                <li>&middot; Unlocking Grant Success <span class="text-slate2-400 text-[11px]">(Nov 2024)</span></li>
-                <li>&middot; Scholarly Writing, Publication Strategy &amp; Research Integrity modules</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <!-- ===== Quality, Safety & Professional Management ===== -->
-        <div>
-          <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate2-200">
-            <div class="w-10 h-10 rounded bg-ink-700 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="briefcase" class="w-5 h-5 text-gold-500"></i>
-            </div>
-            <h3 class="text-base font-bold text-ink-800 leading-tight">Quality, Safety &<br/>Professional Management</h3>
-          </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Council for Six Sigma &mdash; White Belt Certification</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">OSHA Academy &mdash; Occupational Safety and Health Training</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Oxford Home Study Centre &mdash; Strategic Planning</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Saylor Academy &mdash; Business Communication</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Saylor Academy &mdash; Project Management</span></li>
-            <li class="flex gap-3 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0"></i><span class="text-slate2-700">Saylor Academy &mdash; Public Relations</span></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Summary count strip -->
-      <div class="mt-12 pt-8 border-t border-slate2-100 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-        <div>
-          <p class="font-serif text-3xl font-black text-ink-700">11</p>
-          <p class="text-xs uppercase tracking-widest text-slate2-400 mt-1">Teaching programmes</p>
-        </div>
-        <div>
-          <p class="font-serif text-3xl font-black text-ink-700">18</p>
-          <p class="text-xs uppercase tracking-widest text-slate2-400 mt-1">Research certifications</p>
-        </div>
-        <div>
-          <p class="font-serif text-3xl font-black text-ink-700">6</p>
-          <p class="text-xs uppercase tracking-widest text-slate2-400 mt-1">Professional credentials</p>
-        </div>
-        <div>
-          <p class="font-serif text-3xl font-black text-ink-700">35</p>
-          <p class="text-xs uppercase tracking-widest text-slate2-400 mt-1">Total completed</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CV / DOWNLOAD ==================== -->
-  <section id="cv" class="reveal py-20 lg:py-28">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">VI.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">Curriculum Vitae</h2>
-
-      <!-- Intro card with download buttons -->
-      <div class="bg-ink-700 rounded-lg p-8 sm:p-12 text-white overflow-hidden relative mb-8">
-        <div class="absolute top-0 right-0 w-40 h-40 border-t-2 border-r-2 border-gold-500/30" aria-hidden="true"></div>
-
-        <div class="relative grid lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-8">
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold leading-snug mb-4">
-              A complete record of my academic training, teaching, and research.
-            </h3>
-            <p class="text-slate2-200 leading-relaxed mb-0">
-              Read the full curriculum vitae below, or download a copy for your records. The document is also available as a printable PDF.
-            </p>
-          </div>
-          <div class="lg:col-span-4 flex flex-col gap-3">
-            <a href="cv.pdf" download
-               class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-ink-900 font-semibold px-5 py-3 rounded-md transition-colors">
-              <i data-lucide="download" class="w-4 h-4"></i>
-              <span>Download CV (PDF)</span>
-            </a>
-            <a href="cv.pdf" target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-gold-500 hover:text-gold-500 text-white font-medium px-5 py-3 rounded-md transition-colors">
-              <i data-lucide="external-link" class="w-4 h-4"></i>
-              <span>Open in new tab</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Inline PDF viewer -->
-      <div class="bg-white rounded-lg border border-slate2-200 shadow-card overflow-hidden">
-        <div class="bg-bone-100 px-5 py-3 border-b border-slate2-200 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <i data-lucide="file-text" class="w-4 h-4 text-ink-700"></i>
-            <span class="text-sm font-medium text-ink-800">Curriculum Vitae &mdash; Mohd Akram bin Abd Moin</span>
-          </div>
-          <span class="hidden sm:inline text-xs text-slate2-400">PDF preview</span>
-        </div>
-        <!-- The object tag gracefully falls back if the browser cannot render PDFs inline -->
-        <object data="cv.pdf" type="application/pdf" class="w-full" style="height: 900px;" aria-label="Curriculum Vitae of Mohd Akram bin Abd Moin">
-          <!-- Fallback for browsers that cannot display PDFs inline (often mobile) -->
-          <div class="p-10 text-center">
-            <i data-lucide="file-text" class="w-10 h-10 text-slate2-400 mx-auto mb-4"></i>
-            <p class="text-slate2-700 mb-4">Your browser does not support inline PDF preview.</p>
-            <a href="cv.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink-700 hover:bg-ink-800 text-white font-medium px-4 py-2 rounded-md transition-colors">
-              <i data-lucide="download" class="w-4 h-4"></i>
-              <span>Download the CV instead</span>
-            </a>
-          </div>
-        </object>
-      </div>
-
-      <p class="text-xs text-slate2-400 italic mt-4 text-center">
-        Mobile devices may not render PDFs inline. Use the download or &ldquo;Open in new tab&rdquo; buttons above on smaller screens.
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================== AKRAM ACADEMY CALLOUT ==================== -->
-  <section id="academy-callout" class="reveal py-20 lg:py-24">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="bg-gradient-to-br from-ink-700 to-ink-800 rounded-lg overflow-hidden shadow-cardHover">
-        <div class="grid lg:grid-cols-12 items-center">
-          <!-- Visual -->
-          <div class="lg:col-span-5 p-8 lg:p-10 flex justify-center">
-            <div class="relative">
-              <div class="absolute -top-3 -left-3 w-full h-full border-2 border-gold-500/40 rounded-2xl" aria-hidden="true"></div>
-              <div class="relative bg-bone-50 rounded-2xl p-8 w-64 sm:w-72">
-                <div class="flex items-center justify-between mb-5">
-                  <div class="w-11 h-11 rounded-full bg-ink-700 flex items-center justify-center">
-                    <span class="font-serif font-bold text-gold-500 text-sm">AM</span>
-                  </div>
-                  <span class="text-[10px] uppercase tracking-widest text-gold-700 font-semibold">Est. 2026</span>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span style="font-size:.72rem;padding:5px 13px;border-radius:50px;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(212,175,55,.2)">Road Safety</span>
+                    <span style="font-size:.72rem;padding:5px 13px;border-radius:50px;background:var(--crimson-dim);color:var(--crimson);border:1px solid rgba(192,57,43,.2)">Spatial Analytics</span>
+                    <span style="font-size:.72rem;padding:5px 13px;border-radius:50px;background:var(--blue-dim);color:var(--blue);border:1px solid rgba(74,144,217,.2)">Public Policy</span>
+                    <span style="font-size:.72rem;padding:5px 13px;border-radius:50px;background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--border)">GIS Mapping</span>
                 </div>
-                <p class="font-serif text-xl font-bold text-ink-700 leading-snug mb-2">Akram Academy</p>
-                <p class="text-xs text-slate2-500 mb-4">Open Educational Resources</p>
-                <div class="border-t border-slate2-200 pt-4">
-                  <p class="text-[11px] uppercase tracking-widest text-gold-700 font-semibold mb-1">Live now</p>
-                  <p class="text-sm text-ink-800 font-medium">Research Ethics &amp;</p>
-                  <p class="text-sm text-ink-800 font-medium">Peer Review Basics</p>
+
+                <div class="glass p-6 mb-6">
+                    <h3 class="font-bold text-sm mb-4" style="color:var(--gold);font-family:'Syne',sans-serif;letter-spacing:.05em">KEY FINDINGS</h3>
+                    <ul class="space-y-3 text-sm" style="color:var(--muted)">
+                        <li class="flex items-start gap-3"><i class="fas fa-chart-line mt-0.5" style="color:var(--gold)"></i><span>Fatality concentrations exhibit distinct spatial clustering along major urban corridors and intercity routes</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-0.5" style="color:var(--crimson)"></i><span>Regional distribution patterns show significant variation between Peninsular and East Malaysian states</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-clock mt-0.5" style="color:var(--blue)"></i><span>Temporal trends indicate seasonal fluctuation aligned with festive migration periods</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-users mt-0.5" style="color:var(--gold)"></i><span>Demographic analysis reveals differential distribution across age groups and license categories</span></li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Copy -->
-          <div class="lg:col-span-7 p-8 lg:p-10 lg:pr-12 text-white">
-            <p class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-3">An open initiative</p>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight mb-5">
-              I built a free academy for open learning.
-            </h2>
-            <p class="text-slate2-200 leading-relaxed mb-4">
-              <span class="font-semibold text-white">Akram Academy</span> is an independent open educational initiative I founded in 2026. It provides short, focused courses in academic skills — built using Outcome-Based Education principles, free to access, and open to learners worldwide.
-            </p>
-            <p class="text-slate2-200 leading-relaxed mb-8">
-              The first course, <em>Research Ethics and Peer Review Basics</em>, is live now. Earn a Certificate of Completion at the end (non-accredited, freely issued).
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <a href="academy.html" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-ink-900 font-bold px-6 py-3 rounded-md transition-colors">
-                <span>Visit the Academy</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
-              </a>
-              <a href="academy.html" class="inline-flex items-center gap-2 border border-white/30 hover:border-gold-500 hover:text-gold-500 text-white font-medium px-6 py-3 rounded-md transition-colors">
-                <i data-lucide="play-circle" class="w-4 h-4"></i>
-                <span>Start the first course</span>
-              </a>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#contact"      class="btn-gold"><i class="fas fa-handshake"></i> Collaborate</a>
+                    <a href="#publications" class="btn-outline"><i class="fas fa-file-alt"></i> Publications</a>
+                </div>
             </div>
-          </div>
+
+            <!-- Right -->
+            <div>
+                <div class="glass-strong p-7" id="research-chart">
+                    <div class="flex justify-between items-center mb-5">
+                        <h3 style="font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--muted);font-family:'Syne',sans-serif">FATALITY INDEX 2016–2024</h3>
+                        <span style="font-size:.68rem;padding:4px 12px;border-radius:50px;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(212,175,55,.2)">Relative Scale</span>
+                    </div>
+                    <div class="space-y-3" id="chart-bars"></div>
+                    <p style="font-size:.65rem;margin-top:16px;color:rgba(255,255,255,.18)">Source: Road Safety Dept Malaysia (JPJ) · Research: Mohd Akram</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <div class="glass p-5 text-center"><div class="text-2xl font-bold" style="color:var(--gold)" data-counter="9">0</div><div class="text-xs mt-1" style="color:var(--muted)">Years Analysed</div></div>
+                    <div class="glass p-5 text-center"><div class="text-2xl font-bold" style="color:var(--crimson)" data-counter="13">0</div><div class="text-xs mt-1" style="color:var(--muted)">States Covered</div></div>
+                    <div class="glass p-5 text-center"><div class="text-2xl font-bold" style="color:var(--blue)" data-counter="67">0</div><div class="text-xs mt-1" style="color:var(--muted)">Districts Mapped</div></div>
+                    <div class="glass p-5 text-center"><div class="text-2xl font-bold" style="color:var(--gold)" data-counter="4">0</div><div class="text-xs mt-1" style="color:var(--muted)">Pattern Types</div></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- ==================== CONTACT ==================== -->
-  <section id="contact" class="reveal py-20 lg:py-28 bg-white border-t border-slate2-100">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <p class="section-num text-sm mb-3">VII.</p>
-      <h2 class="title-rule text-3xl sm:text-4xl font-bold text-ink-800 mb-12">Contact</h2>
+<div class="royal-divider" style="max-width:700px;position:relative;z-index:2"></div>
 
-      <div class="grid lg:grid-cols-12 gap-12">
-
-        <div class="lg:col-span-6">
-          <p class="text-lg text-slate2-700 leading-relaxed mb-8 max-w-xl">
-            I am open to correspondence regarding research collaboration, teaching opportunities, and academic advising. Written enquiries are preferred; email receives the fastest response.
-          </p>
-
-          <div class="space-y-5">
-            <a href="mailto:akramdinand57@gmail.com" class="group flex items-start gap-4 p-4 rounded-md hover:bg-bone-50 transition-colors">
-              <span class="w-10 h-10 rounded bg-ink-700/5 group-hover:bg-ink-700 text-ink-700 group-hover:text-gold-500 flex items-center justify-center transition-colors flex-shrink-0">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-              </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-slate2-400 font-semibold mb-1">Email</span>
-                <span class="block text-ink-800 font-medium">akramdinand57@gmail.com</span>
-              </span>
-            </a>
-
-            <a href="tel:+60166213854" class="group flex items-start gap-4 p-4 rounded-md hover:bg-bone-50 transition-colors">
-              <span class="w-10 h-10 rounded bg-ink-700/5 group-hover:bg-ink-700 text-ink-700 group-hover:text-gold-500 flex items-center justify-center transition-colors flex-shrink-0">
-                <i data-lucide="phone" class="w-5 h-5"></i>
-              </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-slate2-400 font-semibold mb-1">Telephone</span>
-                <span class="block text-ink-800 font-medium">016-621 3854</span>
-              </span>
-            </a>
-
-            <div class="flex items-start gap-4 p-4">
-              <span class="w-10 h-10 rounded bg-ink-700/5 text-ink-700 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="map-pin" class="w-5 h-5"></i>
-              </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-slate2-400 font-semibold mb-1">Location</span>
-                <span class="block text-ink-800 font-medium">Malaysia</span>
-                <span class="block text-sm text-slate2-500">MITRANS &middot; Universiti Teknologi MARA</span>
-              </span>
-            </div>
-          </div>
+<!-- ══════════════════════════════════════
+     PUBLICATIONS
+══════════════════════════════════════ -->
+<section id="publications" class="section-block">
+    <div class="w-full max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="section-label justify-center">Academic Publications</p>
+            <h2 class="section-title">Research Output</h2>
+            <p class="section-desc mx-auto">Peer-reviewed and open-access publications contributing to sustainability, supply chain, and transport research.</p>
         </div>
-
-        <div class="lg:col-span-6">
-          <div class="bg-bone-50 border border-slate2-100 rounded-lg p-6 sm:p-8">
-            <h3 class="text-lg font-bold text-ink-800 mb-5">Scholarly Profiles</h3>
-            <div class="grid sm:grid-cols-1 gap-3">
-
-              <a href="#" class="flex items-center justify-between p-4 bg-white border border-slate2-100 rounded-md hover:border-gold-400 transition-colors group">
-                <span class="flex items-center gap-3">
-                  <i data-lucide="linkedin" class="w-5 h-5 text-ink-700"></i>
-                  <span>
-                    <span class="block text-sm font-medium text-ink-800">LinkedIn</span>
-                    <span class="block text-xs text-slate2-400">Professional network</span>
-                  </span>
-                </span>
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate2-300 group-hover:text-gold-500"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4 bg-white border border-slate2-100 rounded-md hover:border-gold-400 transition-colors group">
-                <span class="flex items-center gap-3">
-                  <i data-lucide="badge-check" class="w-5 h-5 text-ink-700"></i>
-                  <span>
-                    <span class="block text-sm font-medium text-ink-800">ORCID</span>
-                    <span class="block text-xs text-slate2-400">Persistent researcher ID</span>
-                  </span>
-                </span>
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate2-300 group-hover:text-gold-500"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4 bg-white border border-slate2-100 rounded-md hover:border-gold-400 transition-colors group">
-                <span class="flex items-center gap-3">
-                  <i data-lucide="graduation-cap" class="w-5 h-5 text-ink-700"></i>
-                  <span>
-                    <span class="block text-sm font-medium text-ink-800">Google Scholar</span>
-                    <span class="block text-xs text-slate2-400">Publications and citations</span>
-                  </span>
-                </span>
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate2-300 group-hover:text-gold-500"></i>
-              </a>
-
+        <div class="space-y-5" id="publications-list"></div>
+        <div class="glass mt-7 p-5 flex items-center gap-4">
+            <div style="width:38px;height:38px;border-radius:10px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-hourglass-half" style="color:var(--crimson);font-size:.8rem"></i></div>
+            <div>
+                <p class="text-sm font-semibold" style="color:var(--crimson)">Manuscripts in Preparation</p>
+                <p class="text-sm mt-0.5" style="color:var(--muted)">Additional manuscripts on spatial transport safety analysis are pending submission to indexed journals (2026–2027).</p>
             </div>
-            <p class="text-xs text-slate2-400 italic mt-5">
-              Placeholder links. Update each <code class="bg-white px-1 py-0.5 rounded border border-slate2-200 text-ink-700 not-italic">href="#"</code> in the HTML with your real profile URL.
-            </p>
-          </div>
         </div>
-
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-ink-900 text-slate2-200 py-10">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm">&copy; 2026 Mohd Akram bin Abd Moin. All rights reserved.</p>
-      <p class="text-xs text-slate2-400 italic">Built with care. Last updated April 2026.</p>
+<div class="royal-divider" style="max-width:700px;position:relative;z-index:2"></div>
+
+<!-- ══════════════════════════════════════
+     SKILLS
+══════════════════════════════════════ -->
+<section id="skills" class="section-block">
+    <div class="w-full max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="section-label justify-center">Skills & Certifications</p>
+            <h2 class="section-title">Competency Profile</h2>
+            <p class="section-desc mx-auto">Expertise spanning teaching, research, and logistics — backed by 35+ professional certifications.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 mb-8" id="skills-categories">
+            <button class="filter-btn active" data-cat="teaching"><i class="fas fa-chalkboard-teacher mr-2"></i>Teaching</button>
+            <button class="filter-btn" data-cat="research"><i class="fas fa-flask mr-2"></i>Research</button>
+            <button class="filter-btn" data-cat="logistics"><i class="fas fa-truck mr-2"></i>Logistics & Safety</button>
+        </div>
+        <div class="glass-strong p-8 mb-7" id="skills-panel"></div>
+        <div class="glass-strong p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold text-lg" style="font-family:'Syne',sans-serif">Professional Certifications</h3>
+                <span class="text-sm font-bold" style="color:var(--gold)">35+ Total</span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-3 mb-3" id="certs-featured"></div>
+            <button id="show-more-certs" class="w-full mt-1 py-3 rounded-xl text-sm font-semibold transition-all" style="background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--muted)"><i class="fas fa-chevron-down mr-2"></i>Show all certifications</button>
+            <div class="grid md:grid-cols-3 gap-3 mt-3 hidden" id="certs-extra"></div>
+        </div>
     </div>
-  </footer>
+</section>
 
-  <!-- ==================== SCRIPT ==================== -->
-  <script>
-    // Initialise Lucide icons
-    lucide.createIcons();
+<div class="royal-divider" style="max-width:700px;position:relative;z-index:2"></div>
 
-    // Mobile menu toggle
-    const toggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('mobileMenu');
-    toggle.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      toggle.innerHTML = isOpen
-        ? '<i data-lucide="menu" class="w-6 h-6"></i>'
-        : '<i data-lucide="x" class="w-6 h-6"></i>';
-      lucide.createIcons();
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section id="contact" class="section-block" style="min-height:80vh">
+    <div class="w-full max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Left -->
+            <div>
+                <p class="section-label">Contact</p>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-desc mb-8">Open to research collaborations, academic discourse, consultation, and educational partnerships.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 glass p-4">
+                        <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid rgba(212,175,55,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-envelope" style="color:var(--gold)"></i></div>
+                        <div><p class="text-xs" style="color:var(--muted)">Email</p><a href="mailto:akramdinand57@gmail.com" class="text-sm font-semibold hover:underline" style="color:var(--fg)">akramdinand57@gmail.com</a></div>
+                    </div>
+                    <div class="flex items-center gap-4 glass p-4">
+                        <div style="width:40px;height:40px;border-radius:10px;background:var(--crimson-dim);border:1px solid rgba(192,57,43,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-phone" style="color:var(--crimson)"></i></div>
+                        <div><p class="text-xs" style="color:var(--muted)">Phone</p><a href="tel:+60166213854" class="text-sm font-semibold" style="color:var(--fg)">016-621 3854</a></div>
+                    </div>
+                    <div class="flex items-center gap-4 glass p-4">
+                        <div style="width:40px;height:40px;border-radius:10px;background:var(--blue-dim);border:1px solid rgba(74,144,217,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-map-marker-alt" style="color:var(--blue)"></i></div>
+                        <div><p class="text-xs" style="color:var(--muted)">Location</p><p class="text-sm font-semibold" style="color:var(--fg)">MITRANS, UiTM · Shah Alam, Malaysia</p></div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <a href="https://mohdakram23.github.io/" target="_blank" rel="noopener" class="btn-gold text-sm"><i class="fas fa-globe"></i> My Website</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn-outline text-sm"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://orcid.org" target="_blank" class="btn-outline text-sm"><i class="fas fa-graduation-cap"></i> ORCID</a>
+                    <a href="https://scholar.google.com" target="_blank" class="btn-outline text-sm"><i class="fas fa-book"></i> Scholar</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="glass-strong p-8">
+                <h3 class="font-bold text-lg mb-6" style="font-family:'Syne',sans-serif">Send a Message</h3>
+                <form id="contact-form" class="space-y-4" novalidate>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">First Name</label><input type="text" name="firstName" placeholder="Ahmad" class="form-input"></div>
+                        <div><label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Last Name</label><input type="text" name="lastName" placeholder="Razak" class="form-input"></div>
+                    </div>
+                    <div><label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Email Address</label><input type="email" name="email" placeholder="you@example.com" class="form-input" required></div>
+                    <div><label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Subject</label>
+                        <select name="subject" class="form-input" style="cursor:pointer">
+                            <option value="" style="background:#0d0d22">Select a topic...</option>
+                            <option value="research" style="background:#0d0d22">Research Collaboration</option>
+                            <option value="teaching" style="background:#0d0d22">Teaching / Academic</option>
+                            <option value="consultation" style="background:#0d0d22">Consultation</option>
+                            <option value="other" style="background:#0d0d22">Other</option>
+                        </select>
+                    </div>
+                    <div><label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Message</label><textarea name="message" rows="5" placeholder="Write your message here..." class="form-input" style="resize:vertical;min-height:110px" required></textarea></div>
+                    <button type="submit" class="btn-gold w-full justify-center"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    <p id="form-status" class="text-xs text-center mt-1" style="color:var(--muted)"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="position:relative;z-index:2;padding:36px 24px;border-top:1px solid rgba(212,175,55,.08);text-align:center">
+    <p style="font-family:'Syne',sans-serif;font-size:.82rem;color:var(--muted)">Mohd Akram bin Abd Moin · Postgraduate Researcher & Teaching Assistant · MITRANS, UiTM</p>
+    <p style="font-size:.72rem;margin-top:5px;color:rgba(255,255,255,.15)">© 2026 All rights reserved · Crafted with precision</p>
+</footer>
+
+</main>
+
+<!-- Modal -->
+<div id="modal-overlay" role="dialog" aria-modal="true">
+    <div id="modal-content" class="glass-strong">
+        <div class="flex justify-between items-start mb-5">
+            <h3 id="modal-title" class="font-bold text-lg" style="font-family:'Syne',sans-serif"></h3>
+            <button id="modal-close" style="width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;color:var(--muted)" aria-label="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast glass"></div>
+
+<!-- ═══════════════════════════════════════════
+     THREE.JS — ROYAL GLOBE
+═══════════════════════════════════════════ -->
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass }     from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+/* ══════════ DATA ══════════ */
+const GOLD    = 0xd4af37;
+const CRIMSON = 0xc0392b;
+const BLUE    = 0x4a90d9;
+const CREAM   = 0xf2f0e8;
+
+// Malaysian cities: [lat, lon, label]
+const MARKERS = [
+    [3.139, 101.687, 'Kuala Lumpur'],
+    [3.074, 101.518, 'Shah Alam · UiTM'],
+    [5.414, 100.329, 'Pulau Pinang'],
+    [1.493, 103.741, 'Johor Bahru'],
+    [5.980, 116.074, 'Kota Kinabalu'],
+    [1.553, 110.359, 'Kuching'],
+    [3.812, 103.326, 'Kuantan'],
+    [6.125, 102.238, 'Kota Bharu'],
+];
+
+function latLonToXYZ(lat, lon, r) {
+    const phi   = (90 - lat) * Math.PI / 180;
+    const theta = (lon + 180) * Math.PI / 180;
+    return new THREE.Vector3(
+        -r * Math.sin(phi) * Math.cos(theta),
+         r * Math.cos(phi),
+         r * Math.sin(phi) * Math.sin(theta)
+    );
+}
+
+/* ══════════ SCENE SETUP ══════════ */
+const canvas   = document.getElementById('canvas3d');
+const scene    = new THREE.Scene();
+scene.fog      = new THREE.FogExp2(0x080818, 0.018);
+const camera   = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 300);
+camera.position.set(0, 0, 12);
+
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping        = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+// Post-processing
+const composer  = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.7, 0.5, 0.75);
+composer.addPass(bloom);
+
+/* ══════════ LIGHTS ══════════ */
+scene.add(new THREE.AmbientLight(0x1a1020, 0.5));
+
+const keyLight = new THREE.PointLight(GOLD, 3.5, 40);
+keyLight.position.set(8, 5, 6);
+scene.add(keyLight);
+
+const fillLight = new THREE.PointLight(CRIMSON, 1.8, 35);
+fillLight.position.set(-8, -3, -4);
+scene.add(fillLight);
+
+const rimLight = new THREE.PointLight(BLUE, 2.0, 30);
+rimLight.position.set(0, 8, -8);
+scene.add(rimLight);
+
+/* ══════════ GLOBE ══════════ */
+const GLOBE_R = 3.5;
+const globeGroup = new THREE.Group();
+scene.add(globeGroup);
+
+// Core sphere (subtle solid)
+const coreMat = new THREE.MeshPhysicalMaterial({
+    color: 0x0d0d22,
+    metalness: 0.1,
+    roughness: 0.9,
+    transparent: true,
+    opacity: 0.85,
+});
+const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R - 0.02, 64, 64), coreMat);
+globeGroup.add(coreSphere);
+
+// Wireframe grid
+const wireMat = new THREE.LineBasicMaterial({color: GOLD, transparent: true, opacity: 0.09});
+for (let lat = -90; lat <= 90; lat += 18) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const pts = [];
+    for (let lon = 0; lon <= 360; lon += 3) {
+        const th = lon * Math.PI / 180;
+        pts.push(new THREE.Vector3(
+            -GLOBE_R * Math.sin(phi) * Math.cos(th),
+             GLOBE_R * Math.cos(phi),
+             GLOBE_R * Math.sin(phi) * Math.sin(th)
+        ));
+    }
+    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), wireMat);
+    globeGroup.add(line);
+}
+for (let lon = 0; lon < 360; lon += 18) {
+    const pts = [];
+    for (let lat = -90; lat <= 90; lat += 2) {
+        pts.push(latLonToXYZ(lat, lon, GLOBE_R));
+    }
+    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), wireMat);
+    globeGroup.add(line);
+}
+
+// Equator ring — brighter
+const eqPts = [];
+for (let lon = 0; lon <= 360; lon += 2) eqPts.push(latLonToXYZ(0, lon, GLOBE_R + 0.01));
+globeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(eqPts), new THREE.LineBasicMaterial({color: GOLD, transparent: true, opacity: 0.22})));
+
+// Tropic of Cancer (~Malaysia latitude band)
+const tropicPts = [];
+for (let lon = 0; lon <= 360; lon += 2) tropicPts.push(latLonToXYZ(3.5, lon, GLOBE_R + 0.01));
+globeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(tropicPts), new THREE.LineBasicMaterial({color: CRIMSON, transparent: true, opacity: 0.18})));
+
+// Location markers
+const markerGroup = new THREE.Group();
+globeGroup.add(markerGroup);
+
+const markerGeo  = new THREE.SphereGeometry(0.055, 12, 12);
+const glowGeo    = new THREE.SphereGeometry(0.13, 12, 12);
+const pulsePairs = [];
+
+MARKERS.forEach(([lat, lon, label], i) => {
+    const pos   = latLonToXYZ(lat, lon, GLOBE_R);
+    const isKL  = label.includes('Shah Alam');
+
+    // Dot
+    const dotMat = new THREE.MeshPhysicalMaterial({
+        color: isKL ? GOLD : (i % 2 === 0 ? CRIMSON : BLUE),
+        emissive: isKL ? GOLD : (i % 2 === 0 ? CRIMSON : BLUE),
+        emissiveIntensity: isKL ? 0.8 : 0.5,
+        metalness: 0.4, roughness: 0.2,
+    });
+    const dot = new THREE.Mesh(markerGeo, dotMat);
+    dot.position.copy(pos);
+    markerGroup.add(dot);
+
+    // Glow pulse
+    const glowMat = new THREE.MeshBasicMaterial({
+        color: isKL ? GOLD : (i % 2 === 0 ? CRIMSON : BLUE),
+        transparent: true, opacity: 0.15,
+    });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.copy(pos);
+    markerGroup.add(glow);
+
+    pulsePairs.push({glow, phase: (i / MARKERS.length) * Math.PI * 2, isKL});
+
+    // Spike line from surface outward
+    const spikePts = [pos.clone(), pos.clone().normalize().multiplyScalar(GLOBE_R + (isKL ? 0.5 : 0.25))];
+    const spikeMat = new THREE.LineBasicMaterial({color: isKL ? GOLD : (i%2===0?CRIMSON:BLUE), transparent:true, opacity:0.45});
+    markerGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(spikePts), spikeMat));
+});
+
+// Atmospheric glow shell
+const atmMat = new THREE.MeshPhysicalMaterial({
+    color: 0xd4af37,
+    side: THREE.BackSide,
+    transparent: true,
+    opacity: 0.045,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+});
+globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R + 0.18, 64, 64), atmMat));
+
+// Outer dim ring
+const outerRingGeo = new THREE.TorusGeometry(GLOBE_R + 0.6, 0.008, 16, 200);
+const outerRingMat = new THREE.MeshBasicMaterial({color: GOLD, transparent: true, opacity: 0.12});
+const outerRing    = new THREE.Mesh(outerRingGeo, outerRingMat);
+outerRing.rotation.x = Math.PI / 2;
+globeGroup.add(outerRing);
+
+// Orbit arc (inclined)
+const orbitArcPts = [];
+for (let i = 0; i <= 360; i += 2) {
+    const a = i * Math.PI / 180;
+    orbitArcPts.push(new THREE.Vector3(Math.cos(a) * (GLOBE_R + 0.9), Math.sin(a) * 0.7, Math.sin(a) * (GLOBE_R + 0.9) * 0.55));
+}
+const orbitArc = new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbitArcPts), new THREE.LineBasicMaterial({color: BLUE, transparent: true, opacity: 0.18}));
+globeGroup.add(orbitArc);
+
+// Orbit satellite
+const satGeo = new THREE.OctahedronGeometry(0.1, 0);
+const satMat = new THREE.MeshPhysicalMaterial({color: BLUE, emissive: BLUE, emissiveIntensity: 0.6, metalness: 0.5, roughness: 0.2});
+const satellite = new THREE.Mesh(satGeo, satMat);
+globeGroup.add(satellite);
+let satAngle = 0;
+
+/* ══════════ STARS ══════════ */
+const starCount = 1400;
+const starGeo   = new THREE.BufferGeometry();
+const starPos   = new Float32Array(starCount * 3);
+const starSizes = new Float32Array(starCount);
+for (let i = 0; i < starCount; i++) {
+    const r = 30 + Math.random() * 80;
+    const th = Math.random() * Math.PI * 2;
+    const ph = Math.acos(2 * Math.random() - 1);
+    starPos[i*3]   = r * Math.sin(ph) * Math.cos(th);
+    starPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+    starPos[i*3+2] = r * Math.cos(ph);
+    starSizes[i]   = Math.random() * 1.4 + 0.3;
+}
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+starGeo.setAttribute('size',     new THREE.BufferAttribute(starSizes, 1));
+const starMat = new THREE.ShaderMaterial({
+    uniforms: { time: {value: 0} },
+    vertexShader: `
+        attribute float size;
+        uniform float time;
+        varying float vAlpha;
+        void main(){
+            vAlpha = 0.4 + 0.3 * sin(time * 0.8 + position.x * 0.1);
+            vec4 mv = modelViewMatrix * vec4(position, 1.);
+            gl_PointSize = size * (300. / -mv.z);
+            gl_Position  = projectionMatrix * mv;
+        }`,
+    fragmentShader: `
+        varying float vAlpha;
+        void main(){
+            float d = length(gl_PointCoord - vec2(0.5));
+            if(d > 0.5) discard;
+            float a = (1. - smoothstep(0.1, 0.5, d)) * vAlpha;
+            gl_FragColor = vec4(0.95, 0.92, 0.82, a);
+        }`,
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+});
+scene.add(new THREE.Points(starGeo, starMat));
+
+// Shooting stars / dust particles around globe
+const dustCount = 300;
+const dustGeo   = new THREE.BufferGeometry();
+const dustPos   = new Float32Array(dustCount * 3);
+for (let i = 0; i < dustCount; i++) {
+    const r = GLOBE_R + 1 + Math.random() * 4;
+    const th = Math.random() * Math.PI * 2;
+    const ph = Math.acos(2 * Math.random() - 1);
+    dustPos[i*3]   = r * Math.sin(ph) * Math.cos(th);
+    dustPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+    dustPos[i*3+2] = r * Math.cos(ph);
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+const dustMat = new THREE.PointsMaterial({color: GOLD, size: 0.025, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending, depthWrite: false});
+const dustCloud = new THREE.Points(dustGeo, dustMat);
+scene.add(dustCloud);
+
+/* ══════════ MOUSE & SCROLL ══════════ */
+const mouse = {x: 0, y: 0, tx: 0, ty: 0};
+const cursorGlow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+    mouse.tx = (e.clientX / innerWidth)  * 2 - 1;
+    mouse.ty = -(e.clientY / innerHeight) * 2 + 1;
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top  = e.clientY + 'px';
+});
+let scrollT = 0;
+window.addEventListener('scroll', () => {
+    const max = document.body.scrollHeight - innerHeight;
+    scrollT = max > 0 ? scrollY / max : 0;
+});
+
+/* ══════════ ANIMATION ══════════ */
+const clock = new THREE.Clock();
+let scrollP = 0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    const dt = clock.getDelta();
+    const t  = clock.getElapsedTime();
+
+    scrollP += (scrollT - scrollP) * 0.05;
+    mouse.x  += (mouse.tx - mouse.x) * 0.04;
+    mouse.y  += (mouse.ty - mouse.y) * 0.04;
+
+    starMat.uniforms.time.value = t;
+
+    // Camera
+    camera.position.x += (mouse.x * 0.6 - camera.position.x) * 0.03;
+    camera.position.y += (-scrollP * 1.5 + mouse.y * 0.4 - camera.position.y) * 0.03;
+    camera.lookAt(0, camera.position.y * 0.3, 0);
+
+    // Globe rotation — slow auto-spin + mouse tilt
+    globeGroup.rotation.y  += 0.0018;
+    globeGroup.rotation.x  = mouse.y * 0.12;
+    globeGroup.rotation.z  = -mouse.x * 0.06;
+
+    // Satellite
+    satAngle += dt * 0.45;
+    satellite.position.x = Math.cos(satAngle) * (GLOBE_R + 0.9);
+    satellite.position.y = Math.sin(satAngle) * 0.7;
+    satellite.position.z = Math.sin(satAngle) * (GLOBE_R + 0.9) * 0.55;
+    satellite.rotation.x += dt * 2;
+    satellite.rotation.y += dt * 3;
+
+    // Pulse markers
+    pulsePairs.forEach(({glow, phase, isKL}) => {
+        const s = 1 + Math.sin(t * (isKL ? 2.5 : 1.8) + phase) * 0.4;
+        glow.scale.set(s, s, s);
+        glow.material.opacity = (0.08 + Math.sin(t * 2 + phase) * 0.06) * (isKL ? 1.5 : 1);
     });
 
-    // Close mobile menu when a link is clicked
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-        lucide.createIcons();
-      });
+    // Outer ring slow rotate
+    outerRing.rotation.z = t * 0.08;
+
+    // Lights drift
+    keyLight.position.x  = 8 + Math.sin(t * 0.3) * 2;
+    fillLight.position.x = -8 + Math.cos(t * 0.2) * 2;
+
+    // Dust cloud rotate
+    dustCloud.rotation.y = t * 0.03;
+    dustCloud.rotation.x = t * 0.01;
+
+    // Atmosphere opacity breathe
+    atmMat.opacity = 0.035 + Math.sin(t * 0.6) * 0.015;
+
+    // Bloom strength
+    bloom.strength = 0.65 + Math.sin(t * 0.4) * 0.1;
+
+    composer.render();
+}
+animate();
+
+window.addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+    composer.setSize(innerWidth, innerHeight);
+});
+
+/* ══════════ CONTENT DATA ══════════ */
+const portfolioData = [
+    {title:'Spatial Fatality Analysis Platform',desc:'GIS-based mapping of motorcycle fatality patterns across Malaysian districts using spatial autocorrelation and hotspot detection.',icon:'fa-map-location-dot',color:'#d4af37',tags:['GIS','Spatial Analysis','Road Safety'],cat:'research',detail:'A comprehensive GIS platform mapping spatial patterns in transport safety data for Malaysia. Integrates multi-layer geographic data with statistical modelling to identify high-risk zones across 67 districts from 2016–2024.'},
+    {title:'Transport Safety Research (MSc)',desc:'Ongoing postgraduate research examining motorcycle fatality trend distributions — the core of the MSc dissertation at MITRANS, UiTM.',icon:'fa-motorcycle',color:'#c0392b',tags:['MSc Research','Spatial Stats','Policy'],cat:'research',detail:'This MSc dissertation employs spatial autocorrelation (Moran\'s I), kernel density estimation, and temporal decomposition to reveal patterns in fatality distribution across Malaysian states.'},
+    {title:'Akram Academy — Open Learning',desc:'An independent open educational platform (Est. 2026) offering free courses in academic skills, research ethics, and peer review.',icon:'fa-graduation-cap',color:'#4a90d9',tags:['OER','Academic Skills','Online Learning'],cat:'teaching',detail:'Akram Academy was established in 2026 to democratise access to research skills. The first course — "Research Ethics and Peer Review Basics" — is freely available and integrates UNESCO best practices.'},
+    {title:'Outcome-Based Education Design',desc:'Curriculum development aligned with MQF 2.0 standards, integrating AI-assisted pedagogy and blended learning delivery.',icon:'fa-book-open',color:'#d4af37',tags:['OBE','MQF 2.0','Curriculum'],cat:'teaching',detail:'As a UPTA at MITRANS, designed and delivered OBE-aligned course materials integrating AI tools, interactive assessments, and real-world logistics case studies for undergraduate transport programs.'},
+    {title:'Green Supply Chain Research',desc:'Published research on AI-driven sustainability in Malaysia\'s supply chains — available on Zenodo (2024).',icon:'fa-leaf',color:'#c0392b',tags:['Sustainability','Supply Chain','AI'],cat:'logistics',detail:'Published: "AI-Driven Green Revolution: Revolutionising Malaysia\'s Supply Chains for a Sustainable Future" (Zenodo, 2024). Examines AI adoption pathways for ESG-aligned logistics operations.'},
+    {title:'Peer Review & Publishing',desc:'Certified peer reviewer (Cell Press & The Lancet) contributing to quality academic publishing in transport and management fields.',icon:'fa-newspaper',color:'#4a90d9',tags:['Peer Review','Journals','Academic'],cat:'research',detail:'Certified peer reviewer trained by Cell Press and The Lancet (April 2026). Completed Web of Science Academy and Elsevier Researcher Academy modules on peer review, citation practices, and data management.'}
+];
+
+const timelineData = [
+    {year:'2018 – 2021',title:'Diploma in Business Management',institution:'Universiti Selangor (UniSel)',desc:'Foundation in business administration, management principles, and organisational theory. Built the analytical foundation that informed later logistics and transport studies.',icon:'fa-graduation-cap',color:'#d4af37'},
+    {year:'2021 – 2023',title:'Bachelor of Industrial Management (Hons.)',institution:'Logistics & Supply Chain · Universiti Selangor',desc:'Advanced study in logistics, supply chain optimisation, and industrial operations. Undergraduate thesis explored emerging sustainability trends in Malaysian logistics networks.',icon:'fa-university',color:'#c0392b'},
+    {year:'2025 – Present',title:'Master of Science in Transport & Logistics',institution:'Universiti Teknologi MARA (UiTM) · MITRANS',desc:'Specialised postgraduate research at the Malaysia Institute of Transport. Dissertation focuses on spatial and temporal analysis of motorcycle fatality trends across Malaysia 2016–2024. Final semester, expected 2026.',icon:'fa-flask',color:'#4a90d9'}
+];
+
+const chartData = [
+    {year:2016,value:82},{year:2017,value:88},{year:2018,value:91},
+    {year:2019,value:85},{year:2020,value:66},{year:2021,value:72},
+    {year:2022,value:79},{year:2023,value:75},{year:2024,value:68}
+];
+const chartMax = Math.max(...chartData.map(d => d.value));
+
+const pubsData = [
+    {title:'Factors That Influence Purchase Intentions to Buy Green Products Among Malaysians',journal:'Zenodo (Open Access)',year:2024,doi:'10.5281/zenodo.14175083',doiUrl:'https://doi.org/10.5281/zenodo.14175083',color:'#d4af37',icon:'fa-leaf',tags:['Green Consumption','Consumer Behaviour','Malaysia'],abstract:'Investigates the determinants of green product purchase intentions among Malaysian consumers, examining attitudinal, normative, and contextual factors that drive sustainable purchasing decisions.'},
+    {title:"AI-Driven Green Revolution: Revolutionising Malaysia's Supply Chains for a Sustainable Future",journal:'Zenodo (Open Access)',year:2024,doi:'10.5281/zenodo.14165633',doiUrl:'https://doi.org/10.5281/zenodo.14165633',color:'#c0392b',icon:'fa-robot',tags:['AI','Green Logistics','Supply Chain','Sustainability'],abstract:'Explores the transformative potential of AI technologies in Malaysian supply chains, proposing frameworks for ESG-aligned operational redesign and evaluating adoption pathways for sustainability goals.'}
+];
+
+const skillsData = {
+    teaching:[
+        {name:'Outcome-Based Education (OBE)',level:93,icon:'fa-drafting-compass',desc:'Designing MQF 2.0-aligned curricula with clear outcomes and authentic assessment.'},
+        {name:'AI-Assisted Pedagogy',level:90,icon:'fa-robot',desc:'Integrating Gemini, MS Copilot, and AI tools into course delivery and assessment design.'},
+        {name:'Blended & Online Learning',level:88,icon:'fa-laptop-code',desc:'Delivering hybrid courses with multimedia content and learning management systems.'},
+        {name:'Assessment Design',level:91,icon:'fa-clipboard-check',desc:'Developing rubrics, portfolios, and formative/summative assessments aligned with MQF 2.0.'},
+        {name:'Student Research Mentoring',level:87,icon:'fa-users',desc:'Supervising undergraduate research projects, thesis writing, and scholarly communication.'},
+        {name:'Bilingual Instruction (BM/EN)',level:95,icon:'fa-language',desc:'Delivering academic content fluently in both Bahasa Malaysia and English.'}
+    ],
+    research:[
+        {name:'Spatial Analysis & GIS',level:94,icon:'fa-map',desc:"Hotspot mapping, spatial autocorrelation (Moran's I), kernel density estimation with ArcGIS/QGIS."},
+        {name:'Statistical Modelling',level:88,icon:'fa-square-root-variable',desc:'Regression, time-series decomposition, and multivariate methods for transport data.'},
+        {name:'Research Ethics',level:92,icon:'fa-shield-halved',desc:'Certified by WHO, Cell Press & The Lancet in research ethics and peer review standards.'},
+        {name:'Data Visualisation',level:85,icon:'fa-chart-area',desc:'Communicating complex spatial and statistical findings through compelling visual narratives.'},
+        {name:'Academic Writing & Publishing',level:83,icon:'fa-pen-nib',desc:'Peer-reviewed publications on Zenodo; manuscripts in preparation for indexed journals.'},
+        {name:'Peer Review',level:86,icon:'fa-newspaper',desc:'Certified reviewer (Cell Press & The Lancet); trained via Web of Science & Elsevier Academy.'}
+    ],
+    logistics:[
+        {name:'Transport Safety Analysis',level:95,icon:'fa-helmet-safety',desc:'Spatial and temporal analysis of road fatality data to inform national transport policy.'},
+        {name:'Supply Chain Management',level:88,icon:'fa-boxes-stacked',desc:'End-to-end supply chain optimisation including distribution network analysis and sustainability.'},
+        {name:'Risk Assessment',level:87,icon:'fa-triangle-exclamation',desc:'Systematic risk identification and mitigation planning for transport operations and safety.'},
+        {name:'Logistics Sustainability',level:86,icon:'fa-leaf',desc:'AI-driven green logistics frameworks for ESG-aligned supply chain transformation.'},
+        {name:'Regulatory Compliance',level:82,icon:'fa-gavel',desc:'OSHA-certified; knowledgeable in JPJ, SPAD, and international transport safety standards.'},
+        {name:'Route Optimisation',level:80,icon:'fa-route',desc:'Network analysis and route planning using quantitative modelling and simulation methods.'}
+    ]
+};
+
+const certsData = {
+    featured:[
+        {name:'Gemini Certified Educator',issuer:'Google for Education',year:'Apr 2026–2029',color:'#d4af37',icon:'fa-graduation-cap'},
+        {name:'Certified Peer Reviewer',issuer:'Cell Press & The Lancet',year:'Apr 2026',color:'#c0392b',icon:'fa-newspaper'},
+        {name:'Young Lecturer Program 2.0 with AI',issuer:'Innovative University College',year:'2026',color:'#4a90d9',icon:'fa-chalkboard-teacher'},
+        {name:'WHO Research Ethics Training',issuer:'World Health Organisation',year:'2025',color:'#d4af37',icon:'fa-shield-halved'},
+        {name:'OSHA Safety & Health',issuer:'Dept. of Occupational Safety & Health',year:'2024',color:'#c0392b',icon:'fa-helmet-safety'},
+        {name:'Six Sigma White Belt',issuer:'Council for Six Sigma Certification',year:'2023',color:'#4a90d9',icon:'fa-star'}
+    ],
+    extra:[
+        {name:'Microsoft Educator Academy',issuer:'Microsoft',year:'2026',color:'#d4af37',icon:'fa-microsoft'},
+        {name:'UNESCO Distance Education',issuer:'UNESCO',year:'2025',color:'#c0392b',icon:'fa-globe'},
+        {name:'Web of Science — Peer Review',issuer:'Clarivate / WoS Academy',year:'2026',color:'#4a90d9',icon:'fa-flask'},
+        {name:'Elsevier Researcher Academy',issuer:'Elsevier',year:'2025',color:'#d4af37',icon:'fa-book'},
+        {name:'Research Paper Fundamentals',issuer:'Elsevier Researcher Academy',year:'2025',color:'#c0392b',icon:'fa-file-alt'},
+        {name:'Grant Writing Certification',issuer:'Elsevier Researcher Academy',year:'2025',color:'#4a90d9',icon:'fa-pen'},
+        {name:'Data Management & Sharing',issuer:'Elsevier Researcher Academy',year:'2025',color:'#d4af37',icon:'fa-database'},
+        {name:'Strategic Planning Certification',issuer:'Professional Body',year:'2024',color:'#c0392b',icon:'fa-chess'},
+        {name:'Business Communication',issuer:'Professional Development',year:'2023',color:'#4a90d9',icon:'fa-comments'}
+    ]
+};
+
+/* ══════════ POPULATE DOM ══════════ */
+// Portfolio
+const pg = document.getElementById('portfolio-grid');
+portfolioData.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'tilt-card glass gradient-border p-6 cursor-pointer portfolio-card';
+    card.dataset.index = i; card.dataset.cat = item.cat;
+    card.innerHTML = `<div class="flex items-start gap-3 mb-4"><div style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:${item.color}14;border:1px solid ${item.color}28;flex-shrink:0"><i class="fas ${item.icon}" style="color:${item.color}"></i></div><h3 class="font-bold text-sm" style="font-family:'Syne',sans-serif;line-height:1.35">${item.title}</h3></div><p class="text-sm mb-4" style="color:var(--muted);line-height:1.68">${item.desc}</p><div class="flex flex-wrap gap-1.5">${item.tags.map(t=>`<span style="font-size:.68rem;padding:3px 9px;border-radius:50px;background:rgba(255,255,255,.04);color:var(--muted)">${t}</span>`).join('')}</div>`;
+    pg.appendChild(card);
+});
+
+// Portfolio filter
+document.querySelectorAll('#portfolio-filters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#portfolio-filters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.portfolio-card').forEach(c => c.classList.toggle('hidden-card', f !== 'all' && c.dataset.cat !== f));
     });
+});
 
-    // Fade-in on scroll using IntersectionObserver
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    revealEls.forEach(el => io.observe(el));
+// Timeline
+const tl = document.getElementById('timeline-items');
+timelineData.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'tl-item';
+    el.innerHTML = `<div class="tl-dot" data-tl-dot></div><div class="glass-strong p-6"><div class="flex items-center gap-2 mb-2"><span style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${item.color}">${item.year}</span><i class="fas ${item.icon}" style="color:${item.color};font-size:.7rem"></i></div><h3 class="font-bold text-base" style="font-family:'Syne',sans-serif">${item.title}</h3><p class="text-sm mt-0.5 mb-3" style="color:${item.color};opacity:.75">${item.institution}</p><p class="text-sm" style="color:var(--muted);line-height:1.68">${item.desc}</p></div>`;
+    tl.appendChild(el);
+});
 
-    // Active nav link on scroll
-    const sections = ['about','research','publications','teaching','cv','contact']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-    const navLinks = document.querySelectorAll('nav a.nav-link');
+// Chart
+const cb = document.getElementById('chart-bars');
+const barColors = ['#d4af37','#c8a030','#bc9128','#b08222','#a47320','#985f18','#8c5010','#803f08','#741a00'];
+chartData.forEach((d, i) => {
+    const pct = Math.round((d.value / chartMax) * 100);
+    const bar = document.createElement('div');
+    bar.className = 'flex items-center gap-3';
+    bar.innerHTML = `<span style="font-size:.7rem;color:var(--muted);width:30px;text-align:right;flex-shrink:0">${d.year}</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="${pct}%" style="background:linear-gradient(90deg,${barColors[i]},#f5d888)"></div></div><span style="font-size:.7rem;color:var(--muted);width:22px;flex-shrink:0">${d.value}</span>`;
+    cb.appendChild(bar);
+});
 
-    const setActive = () => {
-      const scrollY = window.scrollY + 120;
-      let currentId = '';
-      for (const s of sections) {
-        if (s.offsetTop <= scrollY) currentId = s.id;
-      }
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
-      });
-    };
-    window.addEventListener('scroll', setActive, { passive: true });
-    setActive();
-  </script>
+// Publications
+const pl = document.getElementById('publications-list');
+pubsData.forEach(pub => {
+    const el = document.createElement('div');
+    el.className = 'pub-card glass p-6';
+    el.innerHTML = `<div class="flex items-start gap-4"><div style="width:44px;height:44px;border-radius:12px;background:${pub.color}12;border:1px solid ${pub.color}25;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas ${pub.icon}" style="color:${pub.color}"></i></div><div class="flex-1 min-w-0"><div class="flex flex-wrap gap-2 mb-2"><span style="font-size:.68rem;padding:3px 10px;border-radius:50px;background:${pub.color}10;color:${pub.color};border:1px solid ${pub.color}20">${pub.year}</span><span style="font-size:.68rem;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,.04);color:var(--muted)">${pub.journal}</span></div><h3 class="font-bold text-base mb-2" style="font-family:'Syne',sans-serif;line-height:1.4">${pub.title}</h3><p class="text-sm mb-3" style="color:var(--muted);line-height:1.68">${pub.abstract}</p><div class="flex flex-wrap items-center gap-3"><a href="${pub.doiUrl}" target="_blank" rel="noopener" class="text-xs font-bold flex items-center gap-1.5 hover:underline" style="color:${pub.color}"><i class="fas fa-external-link-alt" style="font-size:.6rem"></i>DOI: ${pub.doi}</a><div class="flex flex-wrap gap-1.5">${pub.tags.map(t=>`<span style="font-size:.65rem;padding:2px 8px;border-radius:50px;background:rgba(255,255,255,.03);color:var(--muted)">${t}</span>`).join('')}</div></div></div></div>`;
+    pl.appendChild(el);
+});
 
+// Skills
+function renderSkills(cat) {
+    const colors = {teaching:'#d4af37', research:'#c0392b', logistics:'#4a90d9'};
+    const col = colors[cat];
+    const grad = {teaching:'#f5e08a', research:'#e87060', logistics:'#90c0f0'};
+    const panel = document.getElementById('skills-panel');
+    panel.innerHTML = `<div class="grid md:grid-cols-2 gap-x-10 gap-y-6">${skillsData[cat].map(s => `
+        <div>
+            <div class="flex items-center gap-2 mb-2">
+                <i class="fas ${s.icon}" style="color:${col};font-size:.82rem;width:16px"></i>
+                <span class="text-sm font-semibold">${s.name}</span>
+                <span class="ml-auto text-xs font-bold" style="color:${col}">${s.level}%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="${s.level}%" style="background:linear-gradient(90deg,${col},${grad[cat]})"></div></div>
+            <p class="text-xs mt-1.5" style="color:var(--muted);line-height:1.6">${s.desc}</p>
+        </div>`).join('')}
+    </div>`;
+    document.querySelectorAll('#skills-categories .filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    setTimeout(() => panel.querySelectorAll('.skill-bar-fill').forEach(b => { b.style.width = b.dataset.width; }), 60);
+}
+renderSkills('teaching');
+document.querySelectorAll('#skills-categories .filter-btn').forEach(btn => btn.addEventListener('click', () => renderSkills(btn.dataset.cat)));
+
+function renderCerts(data, id) {
+    const c = document.getElementById(id);
+    data.forEach(cert => {
+        const el = document.createElement('div');
+        el.className = 'cert-badge';
+        el.innerHTML = `<div style="width:30px;height:30px;border-radius:7px;background:${cert.color}12;border:1px solid ${cert.color}25;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas ${cert.icon}" style="color:${cert.color};font-size:.65rem"></i></div><div class="min-w-0"><p class="text-xs font-semibold truncate">${cert.name}</p><p class="text-xs mt-0.5 truncate" style="color:var(--muted)">${cert.issuer} · ${cert.year}</p></div>`;
+        c.appendChild(el);
+    });
+}
+renderCerts(certsData.featured, 'certs-featured');
+renderCerts(certsData.extra,    'certs-extra');
+const showMoreBtn  = document.getElementById('show-more-certs');
+const certsExtraEl = document.getElementById('certs-extra');
+showMoreBtn.addEventListener('click', () => {
+    const h = certsExtraEl.classList.toggle('hidden');
+    showMoreBtn.innerHTML = h ? '<i class="fas fa-chevron-down mr-2"></i>Show all certifications' : '<i class="fas fa-chevron-up mr-2"></i>Hide certifications';
+});
+
+/* ══════════ GSAP ══════════ */
+gsap.registerPlugin(ScrollTrigger);
+
+const heroTl = gsap.timeline({delay: 0.4});
+heroTl.from('#hero-tags',            {y:30, opacity:0, duration:.8, ease:'power3.out'})
+      .from('#hero-title',           {y:50, opacity:0, duration:1,  ease:'power3.out'}, '-=.5')
+      .from('#hero-subtitle',        {y:30, opacity:0, duration:.8},                   '-=.55')
+      .from('#hero-ctas',            {y:20, opacity:0, duration:.6},                   '-=.4')
+      .from('#hero-stats > div',     {y:20, opacity:0, duration:.5, stagger:.1},       '-=.3');
+
+gsap.to('#hero-content', {scrollTrigger:{trigger:'#hero',start:'top top',end:'40% top',scrub:1}, y:-80, opacity:0});
+
+gsap.from('.portfolio-card', {scrollTrigger:{trigger:'#portfolio',start:'top 80%',end:'top 30%',scrub:1}, y:60, opacity:0, stagger:.08});
+
+gsap.utils.toArray('.tl-item').forEach(item => {
+    gsap.from(item, {scrollTrigger:{trigger:item,start:'top 85%',end:'top 55%',scrub:1}, x:-30, opacity:0});
+    ScrollTrigger.create({trigger:item, start:'top 70%', onEnter:() => item.querySelector('[data-tl-dot]')?.classList.add('lit'), onLeaveBack:() => item.querySelector('[data-tl-dot]')?.classList.remove('lit')});
+});
+
+ScrollTrigger.create({trigger:'#research-chart', start:'top 70%', onEnter:() => {
+    document.querySelectorAll('#chart-bars .skill-bar-fill').forEach((bar, i) => setTimeout(() => { bar.style.width = bar.dataset.width; }, i * 80));
+}});
+ScrollTrigger.create({trigger:'#research', start:'top 60%', onEnter:() => {
+    document.querySelectorAll('[data-counter]').forEach(el => {
+        const target = parseInt(el.dataset.counter); let cur = 0;
+        const iv = setInterval(() => { cur += Math.ceil(target/40); if(cur >= target){cur=target;clearInterval(iv);} el.textContent = cur; }, 30);
+    });
+}});
+ScrollTrigger.create({trigger:'#skills-panel', start:'top 75%', onEnter:() => {
+    document.querySelectorAll('#skills-panel .skill-bar-fill').forEach(b => { b.style.width = b.dataset.width; });
+}});
+gsap.from('.pub-card',       {scrollTrigger:{trigger:'#publications',start:'top 75%',end:'top 35%',scrub:1}, y:50, opacity:0, stagger:.12});
+gsap.utils.toArray('.section-label').forEach(el => gsap.from(el,  {scrollTrigger:{trigger:el,start:'top 88%',end:'top 68%',scrub:1}, y:16, opacity:0}));
+gsap.utils.toArray('.section-title').forEach(el => gsap.from(el,  {scrollTrigger:{trigger:el,start:'top 88%',end:'top 68%',scrub:1}, y:28, opacity:0}));
+
+/* ══════════ NAVBAR ══════════ */
+const navbar   = document.getElementById('navbar');
+const sections = ['hero','portfolio','journey','research','publications','skills','contact'];
+let lastSY = 0;
+window.addEventListener('scroll', () => {
+    const csy = scrollY;
+    navbar.classList.toggle('nav-hidden', csy > lastSY && csy > 200);
+    lastSY = csy;
+    let active = 'hero';
+    sections.forEach(id => { const el = document.getElementById(id); if(el){ const r = el.getBoundingClientRect(); if(r.top <= innerHeight/2 && r.bottom > 0) active = id; } });
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.section === active));
+});
+document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', e => { e.preventDefault(); document.getElementById(l.dataset.section)?.scrollIntoView({behavior:'smooth'}); }));
+
+/* ══════════ CARD TILT ══════════ */
+document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', e => { const r=card.getBoundingClientRect(); const rx=((e.clientY-r.top-r.height/2)/r.height/2)*-7,ry=((e.clientX-r.left-r.width/2)/r.width/2)*7; card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.025)`; });
+    card.addEventListener('mouseleave', () => { card.style.transform='perspective(800px) rotateX(0) rotateY(0) scale(1)'; });
+});
+
+/* ══════════ MODAL ══════════ */
+const modalOverlay = document.getElementById('modal-overlay');
+window.closeModal  = () => modalOverlay.classList.remove('visible');
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => { if(e.target === modalOverlay) closeModal(); });
+document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const d = portfolioData[parseInt(card.dataset.index)];
+        document.getElementById('modal-title').textContent = d.title;
+        document.getElementById('modal-body').innerHTML = `<div class="flex flex-wrap gap-2 mb-4">${d.tags.map(t=>`<span style="font-size:.72rem;padding:4px 12px;border-radius:50px;background:${d.color}10;color:${d.color};border:1px solid ${d.color}22">${t}</span>`).join('')}</div><p style="color:var(--muted);line-height:1.78;font-size:.94rem">${d.detail}</p><div class="mt-6 flex gap-3"><a href="#contact" class="btn-gold text-sm" onclick="closeModal()"><i class="fas fa-envelope"></i> Collaborate</a><button class="btn-outline text-sm" onclick="closeModal()">Close</button></div>`;
+        modalOverlay.classList.add('visible');
+    });
+});
+
+/* ══════════ CONTACT FORM ══════════ */
+document.getElementById('contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const form   = e.target;
+    const status = document.getElementById('form-status');
+    if(!form.email.value || !form.message.value){ status.textContent='Please fill in all required fields.'; status.style.color='var(--crimson)'; return; }
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    setTimeout(() => {
+        btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        status.textContent = 'Message sent! Mohd Akram will be in touch soon.';
+        status.style.color = '#d4af37';
+        form.reset();
+        setTimeout(() => { status.textContent = ''; }, 5000);
+    }, 1500);
+});
+
+/* ══════════ TOAST ══════════ */
+window.showToast = msg => { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); };
+
+/* ══════════ KEYBOARD ══════════ */
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+/* ══════════ SMOOTH ANCHORS ══════════ */
+document.querySelectorAll('a[href^="#"]').forEach(l => l.addEventListener('click', e => { const t=document.querySelector(l.getAttribute('href')); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});} }));
+
+/* ══════════ LOADER ══════════ */
+const loadFill = document.getElementById('load-fill');
+const loader   = document.getElementById('loader');
+let lp = 0;
+const li = setInterval(() => {
+    lp += Math.random() * 12 + 5;
+    if(lp >= 100){ lp=100; clearInterval(li); loadFill.style.width='100%'; setTimeout(()=>loader.classList.add('hidden'), 600); }
+    else loadFill.style.width = lp + '%';
+}, 200);
+</script>
 </body>
 </html>
